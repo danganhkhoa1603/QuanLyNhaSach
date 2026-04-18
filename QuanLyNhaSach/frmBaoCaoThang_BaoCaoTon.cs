@@ -29,9 +29,7 @@ namespace QuanLyNhaSach
 
         private void btnBaoCaoCongNo_Click(object sender, EventArgs e)
         {
-            var frm = new frmBaoCaoThang_BaoCaoCongNo();
-            frm.ShowDialog();
-            this.Hide();
+            
         }
 
         private void btnBaoCaoThang_Click(object sender, EventArgs e)
@@ -51,6 +49,17 @@ namespace QuanLyNhaSach
             ucBaoCaoTon uc = new ucBaoCaoTon();
             uc.Dock = DockStyle.Fill;
             pnl.Controls.Add(uc);
+        }
+
+        private void frmBaoCaoThang_BaoCaoTon_Load(object sender, EventArgs e)
+        {
+            HienThiUserControl(new ucNhapSach());
+        }
+        public void HienThiUserControl(UserControl uc)
+        {
+            pnlMain.Controls.Clear();
+            uc.Dock = DockStyle.Fill;
+            pnlMain.Controls.Add(uc);
         }
     }
 }

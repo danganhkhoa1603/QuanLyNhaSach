@@ -52,12 +52,6 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmBaoCaoThang_BaoCaoCongNo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmBaoCaoThang_BaoCaoCongNo.Designer.cs">
-      <DependentUpon>frmBaoCaoThang_BaoCaoCongNo.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmBaoCaoThang_BaoCaoTon.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,25 +76,28 @@
     <Compile Include="frmXemChiTiet.Designer.cs">
       <DependentUpon>frmXemChiTiet.cs</DependentUpon>
     </Compile>
-    <Compile Include="NhapSach.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="NhapSach.Designer.cs">
-      <DependentUpon>NhapSach.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ucBaoCaoCongNo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucBaoCaoCongNo.Designer.cs">
+      <DependentUpon>ucBaoCaoCongNo.cs</DependentUpon>
+    </Compile>
     <Compile Include="ucBaoCaoTon.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="ucBaoCaoTon.Designer.cs">
       <DependentUpon>ucBaoCaoTon.cs</DependentUpon>
     </Compile>
+    <Compile Include="ucNhapSach.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucNhapSach.Designer.cs">
+      <DependentUpon>ucNhapSach.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmBaoCaoThang_BaoCaoCongNo.resx">
-      <DependentUpon>frmBaoCaoThang_BaoCaoCongNo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmBaoCaoThang_BaoCaoTon.resx">
       <DependentUpon>frmBaoCaoThang_BaoCaoTon.cs</DependentUpon>
@@ -114,9 +111,6 @@
     <EmbeddedResource Include="frmXemChiTiet.resx">
       <DependentUpon>frmXemChiTiet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NhapSach.resx">
-      <DependentUpon>NhapSach.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -127,8 +121,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ucBaoCaoCongNo.resx">
+      <DependentUpon>ucBaoCaoCongNo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ucBaoCaoTon.resx">
       <DependentUpon>ucBaoCaoTon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucNhapSach.resx">
+      <DependentUpon>ucNhapSach.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

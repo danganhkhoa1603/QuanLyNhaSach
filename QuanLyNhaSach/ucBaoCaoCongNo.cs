@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace QuanLyNhaSach
 {
-    public partial class ucBaoCaoTon : UserControl
+    public partial class ucBaoCaoCongNo : UserControl
     {
-        public ucBaoCaoTon()
+        public ucBaoCaoCongNo()
         {
             InitializeComponent();
         }
 
-        private void btnBaoCaoCongNo_Click(object sender, EventArgs e)
+        private void btnBaoCaoTon_Click(object sender, EventArgs e)
         {
             Form mainForm = this.FindForm();
             Control pnl = mainForm.Controls.Find("pnlMain", true).FirstOrDefault();
@@ -25,13 +25,13 @@ namespace QuanLyNhaSach
             {
                 pnl.Controls.Clear();
 
-                ucBaoCaoCongNo ucCongNo = new ucBaoCaoCongNo();
-                ucCongNo.Dock = DockStyle.Fill;
-                pnl.Controls.Add(ucCongNo);
+                ucBaoCaoTon ucTon = new ucBaoCaoTon();
+                ucTon.Dock = DockStyle.Fill;
+                pnl.Controls.Add(ucTon);
             }
         }
 
-        private void btnBaoCaoTon_Click(object sender, EventArgs e)
+        private void btnBaoCaoCongNo_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Bạn đã ở trang này rồi!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }

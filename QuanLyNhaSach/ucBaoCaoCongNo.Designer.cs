@@ -1,6 +1,6 @@
 ﻿namespace QuanLyNhaSach
 {
-    partial class ucBaoCaoTon
+    partial class ucBaoCaoCongNo
     {
         /// <summary> 
         /// Required designer variable.
@@ -32,7 +32,7 @@
             this.btnBaoCaoCongNo = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTenSach = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colKhachHang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTonDau = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPhatSinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTonCuoi = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,10 +44,10 @@
             // btnBaoCaoTon
             // 
             this.btnBaoCaoTon.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBaoCaoTon.Location = new System.Drawing.Point(428, 229);
+            this.btnBaoCaoTon.Location = new System.Drawing.Point(428, 228);
             this.btnBaoCaoTon.Name = "btnBaoCaoTon";
             this.btnBaoCaoTon.Size = new System.Drawing.Size(105, 33);
-            this.btnBaoCaoTon.TabIndex = 11;
+            this.btnBaoCaoTon.TabIndex = 15;
             this.btnBaoCaoTon.Text = "Báo Cáo Tồn";
             this.btnBaoCaoTon.UseVisualStyleBackColor = true;
             this.btnBaoCaoTon.Click += new System.EventHandler(this.btnBaoCaoTon_Click);
@@ -55,10 +55,10 @@
             // btnBaoCaoCongNo
             // 
             this.btnBaoCaoCongNo.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBaoCaoCongNo.Location = new System.Drawing.Point(556, 229);
+            this.btnBaoCaoCongNo.Location = new System.Drawing.Point(556, 228);
             this.btnBaoCaoCongNo.Name = "btnBaoCaoCongNo";
             this.btnBaoCaoCongNo.Size = new System.Drawing.Size(115, 33);
-            this.btnBaoCaoCongNo.TabIndex = 12;
+            this.btnBaoCaoCongNo.TabIndex = 16;
             this.btnBaoCaoCongNo.Text = "Báo Cáo Công Nợ";
             this.btnBaoCaoCongNo.UseVisualStyleBackColor = true;
             this.btnBaoCaoCongNo.Click += new System.EventHandler(this.btnBaoCaoCongNo_Click);
@@ -68,14 +68,14 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colID,
-            this.colTenSach,
+            this.colKhachHang,
             this.colTonDau,
             this.colPhatSinh,
             this.colTonCuoi});
-            this.dataGridView1.Location = new System.Drawing.Point(30, 50);
+            this.dataGridView1.Location = new System.Drawing.Point(30, 49);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(641, 163);
-            this.dataGridView1.TabIndex = 10;
+            this.dataGridView1.TabIndex = 14;
             // 
             // colID
             // 
@@ -84,12 +84,12 @@
             this.colID.MinimumWidth = 6;
             this.colID.Name = "colID";
             // 
-            // colTenSach
+            // colKhachHang
             // 
-            this.colTenSach.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colTenSach.HeaderText = "Tên Sách";
-            this.colTenSach.MinimumWidth = 6;
-            this.colTenSach.Name = "colTenSach";
+            this.colKhachHang.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colKhachHang.HeaderText = "Khách Hàng";
+            this.colKhachHang.MinimumWidth = 6;
+            this.colKhachHang.Name = "colKhachHang";
             // 
             // colTonDau
             // 
@@ -116,24 +116,24 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(27, 34);
+            this.label2.Location = new System.Drawing.Point(27, 33);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 13);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Báo cáo tồn";
+            this.label2.Size = new System.Drawing.Size(98, 13);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Báo cáo công nợ";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(240, 4);
+            this.label1.Location = new System.Drawing.Point(238, 3);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(252, 25);
-            this.label1.TabIndex = 8;
+            this.label1.TabIndex = 12;
             this.label1.Text = "BÁO CÁO ĐỊNH KỲ THÁNG";
             // 
-            // ucBaoCaoTon
+            // ucBaoCaoCongNo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -142,7 +142,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "ucBaoCaoTon";
+            this.Name = "ucBaoCaoCongNo";
             this.Size = new System.Drawing.Size(718, 284);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -156,7 +156,7 @@
         private System.Windows.Forms.Button btnBaoCaoCongNo;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn colID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colTenSach;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colKhachHang;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTonDau;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPhatSinh;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTonCuoi;

@@ -41,7 +41,7 @@ private void btnThoat_Click(object sender, EventArgs e)
 
         private void button1_Click(object sender, EventArgs e)
         {
-           NhapSach frm = new NhapSach();
+            var frm = new frmBaoCaoThang_BaoCaoTon();
             frm.StartPosition = FormStartPosition.CenterParent;
             frm.ShowDialog();
         }
