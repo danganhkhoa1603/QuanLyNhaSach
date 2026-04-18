@@ -21,5 +21,15 @@ namespace QuanLyNhaSach
         {
 
         }
+
+        private void btnDangXuat_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Bạn muốn đăng xuất và quay lại màn hình đăng nhập?", "Xác nhận", MessageBoxButtons.YesNo);
+
+            if (dr == DialogResult.Yes)
+            {
+                Application.Restart();
+            }
+        }
     }
 }
