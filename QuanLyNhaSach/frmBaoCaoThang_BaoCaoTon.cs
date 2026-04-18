@@ -67,5 +67,41 @@ namespace QuanLyNhaSach
         {
             HienThiUserControl(new ucNhapSach());
         }
+
+        private void btnBanHang_Click_1(object sender, EventArgs e)
+        {
+            pnlMain.Controls.Clear();
+
+          
+            ucBanHang trangNhap = new ucBanHang();
+            trangNhap.Dock = DockStyle.Fill;
+
+            
+            pnlMain.Controls.Add(trangNhap);
+        }
+
+        private void btnTraCuuSach_Click(object sender, EventArgs e)
+        {
+            pnlMain.Controls.Clear();
+
+
+            ucTraCuuSach trangNhap = new ucTraCuuSach();
+            trangNhap.Dock = DockStyle.Fill;
+
+
+            pnlMain.Controls.Add(trangNhap);
+        }
+
+        private void btnPhieuThuTien_Click(object sender, EventArgs e)
+        {
+            pnlMain.Controls.Clear();
+
+
+            ucPhieuThuTien trangNhap = new ucPhieuThuTien();
+            trangNhap.Dock = DockStyle.Fill;
+
+
+            pnlMain.Controls.Add(trangNhap);
+        }
     }
 }

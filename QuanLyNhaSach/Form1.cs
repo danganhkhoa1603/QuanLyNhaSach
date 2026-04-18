@@ -45,6 +45,21 @@ private void btnThoat_Click(object sender, EventArgs e)
             frm.StartPosition = FormStartPosition.CenterParent;
             frm.ShowDialog();
         }
+
+        private void txtMatKhau_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            {
+                if (chkShowPass.Checked)
+                    txtMatKhau.UseSystemPasswordChar = false;
+                else
+                    txtMatKhau.UseSystemPasswordChar = true;
+            }
+        }
     }
     }
 

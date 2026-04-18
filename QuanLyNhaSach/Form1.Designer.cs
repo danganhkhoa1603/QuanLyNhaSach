@@ -41,6 +41,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.chkShowPass = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -54,6 +55,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.chkShowPass);
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.btnThoat);
@@ -98,6 +100,8 @@
             this.txtMatKhau.Name = "txtMatKhau";
             this.txtMatKhau.Size = new System.Drawing.Size(264, 21);
             this.txtMatKhau.TabIndex = 3;
+            this.txtMatKhau.UseSystemPasswordChar = true;
+            this.txtMatKhau.TextChanged += new System.EventHandler(this.txtMatKhau_TextChanged);
             // 
             // panel3
             // 
@@ -199,6 +203,17 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Đăng Nhập Hệ Thống";
             // 
+            // chkShowPass
+            // 
+            this.chkShowPass.AutoSize = true;
+            this.chkShowPass.Location = new System.Drawing.Point(47, 253);
+            this.chkShowPass.Name = "chkShowPass";
+            this.chkShowPass.Size = new System.Drawing.Size(115, 20);
+            this.chkShowPass.TabIndex = 10;
+            this.chkShowPass.Text = "Hiện Mật Khẩu";
+            this.chkShowPass.UseVisualStyleBackColor = true;
+            this.chkShowPass.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // panel2
             // 
             this.panel2.BackgroundImage = global::QuanLyNhaSach.Properties.Resources.c25ba372_1c0e_4e56_9d05_3648ac5a751d;
@@ -268,6 +283,7 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.TextBox txtMatKhau;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.CheckBox chkShowPass;
     }
 }
 

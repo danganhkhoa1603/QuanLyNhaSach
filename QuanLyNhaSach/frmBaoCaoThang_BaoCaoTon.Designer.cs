@@ -35,12 +35,12 @@
             this.btnTraCuuSach = new System.Windows.Forms.Button();
             this.btnBanHang = new System.Windows.Forms.Button();
             this.btnNhapSach = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlBaoCaoTon = new System.Windows.Forms.Panel();
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlBaoCaoTon.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -55,119 +55,131 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(722, 81);
+            this.panel1.Size = new System.Drawing.Size(963, 100);
             this.panel1.TabIndex = 3;
             // 
             // btnBaoCaoThang
             // 
+            this.btnBaoCaoThang.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(235)))), ((int)(((byte)(245)))));
             this.btnBaoCaoThang.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBaoCaoThang.Location = new System.Drawing.Point(504, 21);
+            this.btnBaoCaoThang.Location = new System.Drawing.Point(672, 26);
+            this.btnBaoCaoThang.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnBaoCaoThang.Name = "btnBaoCaoThang";
-            this.btnBaoCaoThang.Size = new System.Drawing.Size(92, 37);
+            this.btnBaoCaoThang.Size = new System.Drawing.Size(123, 46);
             this.btnBaoCaoThang.TabIndex = 3;
             this.btnBaoCaoThang.Text = "Báo cáo tháng";
-            this.btnBaoCaoThang.UseVisualStyleBackColor = true;
+            this.btnBaoCaoThang.UseVisualStyleBackColor = false;
             this.btnBaoCaoThang.Click += new System.EventHandler(this.btnBaoCaoThang_Click);
             // 
             // btnThayDoiQuyDinh
             // 
+            this.btnThayDoiQuyDinh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(235)))), ((int)(((byte)(245)))));
             this.btnThayDoiQuyDinh.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThayDoiQuyDinh.Location = new System.Drawing.Point(610, 22);
-            this.btnThayDoiQuyDinh.Margin = new System.Windows.Forms.Padding(2);
+            this.btnThayDoiQuyDinh.Location = new System.Drawing.Point(813, 27);
+            this.btnThayDoiQuyDinh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThayDoiQuyDinh.Name = "btnThayDoiQuyDinh";
-            this.btnThayDoiQuyDinh.Size = new System.Drawing.Size(92, 37);
+            this.btnThayDoiQuyDinh.Size = new System.Drawing.Size(123, 46);
             this.btnThayDoiQuyDinh.TabIndex = 2;
             this.btnThayDoiQuyDinh.Text = "Thay đổi quy định";
-            this.btnThayDoiQuyDinh.UseVisualStyleBackColor = true;
+            this.btnThayDoiQuyDinh.UseVisualStyleBackColor = false;
             this.btnThayDoiQuyDinh.Click += new System.EventHandler(this.btnThayDoiQuyDinh_Click);
             // 
             // btnPhieuThuTien
             // 
+            this.btnPhieuThuTien.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(235)))), ((int)(((byte)(245)))));
             this.btnPhieuThuTien.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPhieuThuTien.Location = new System.Drawing.Point(407, 21);
-            this.btnPhieuThuTien.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPhieuThuTien.Location = new System.Drawing.Point(543, 26);
+            this.btnPhieuThuTien.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPhieuThuTien.Name = "btnPhieuThuTien";
-            this.btnPhieuThuTien.Size = new System.Drawing.Size(78, 37);
+            this.btnPhieuThuTien.Size = new System.Drawing.Size(104, 46);
             this.btnPhieuThuTien.TabIndex = 2;
             this.btnPhieuThuTien.Text = "Phiếu thu tiền";
-            this.btnPhieuThuTien.UseVisualStyleBackColor = true;
+            this.btnPhieuThuTien.UseVisualStyleBackColor = false;
+            this.btnPhieuThuTien.Click += new System.EventHandler(this.btnPhieuThuTien_Click);
             // 
             // btnTraCuuSach
             // 
+            this.btnTraCuuSach.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(235)))), ((int)(((byte)(245)))));
             this.btnTraCuuSach.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTraCuuSach.Location = new System.Drawing.Point(310, 22);
-            this.btnTraCuuSach.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTraCuuSach.Location = new System.Drawing.Point(413, 27);
+            this.btnTraCuuSach.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTraCuuSach.Name = "btnTraCuuSach";
-            this.btnTraCuuSach.Size = new System.Drawing.Size(79, 37);
+            this.btnTraCuuSach.Size = new System.Drawing.Size(105, 46);
             this.btnTraCuuSach.TabIndex = 2;
             this.btnTraCuuSach.Text = "Tra cứu sách";
-            this.btnTraCuuSach.UseVisualStyleBackColor = true;
+            this.btnTraCuuSach.UseVisualStyleBackColor = false;
+            this.btnTraCuuSach.Click += new System.EventHandler(this.btnTraCuuSach_Click);
             // 
             // btnBanHang
             // 
+            this.btnBanHang.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(235)))), ((int)(((byte)(245)))));
             this.btnBanHang.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBanHang.Location = new System.Drawing.Point(212, 22);
-            this.btnBanHang.Margin = new System.Windows.Forms.Padding(2);
+            this.btnBanHang.Location = new System.Drawing.Point(283, 27);
+            this.btnBanHang.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnBanHang.Name = "btnBanHang";
-            this.btnBanHang.Size = new System.Drawing.Size(82, 37);
+            this.btnBanHang.Size = new System.Drawing.Size(109, 46);
             this.btnBanHang.TabIndex = 2;
             this.btnBanHang.Text = "Bán Hàng";
-            this.btnBanHang.UseVisualStyleBackColor = true;
+            this.btnBanHang.UseVisualStyleBackColor = false;
+            this.btnBanHang.Click += new System.EventHandler(this.btnBanHang_Click_1);
             // 
             // btnNhapSach
             // 
             this.btnNhapSach.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(235)))), ((int)(((byte)(245)))));
             this.btnNhapSach.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNhapSach.Location = new System.Drawing.Point(110, 22);
-            this.btnNhapSach.Margin = new System.Windows.Forms.Padding(2);
+            this.btnNhapSach.Location = new System.Drawing.Point(147, 27);
+            this.btnNhapSach.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnNhapSach.Name = "btnNhapSach";
-            this.btnNhapSach.Size = new System.Drawing.Size(88, 37);
+            this.btnNhapSach.Size = new System.Drawing.Size(117, 46);
             this.btnNhapSach.TabIndex = 1;
             this.btnNhapSach.Text = "Nhập Sách";
             this.btnNhapSach.UseVisualStyleBackColor = false;
             this.btnNhapSach.Click += new System.EventHandler(this.btnNhapSach_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::QuanLyNhaSach.Properties.Resources.LHK;
-            this.pictureBox1.Location = new System.Drawing.Point(2, 2);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(103, 76);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // pnlBaoCaoTon
             // 
             this.pnlBaoCaoTon.Controls.Add(this.pnlMain);
-            this.pnlBaoCaoTon.Location = new System.Drawing.Point(3, 84);
+            this.pnlBaoCaoTon.Location = new System.Drawing.Point(4, 103);
+            this.pnlBaoCaoTon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlBaoCaoTon.Name = "pnlBaoCaoTon";
-            this.pnlBaoCaoTon.Size = new System.Drawing.Size(718, 284);
+            this.pnlBaoCaoTon.Size = new System.Drawing.Size(957, 350);
             this.pnlBaoCaoTon.TabIndex = 4;
             // 
             // pnlMain
             // 
             this.pnlMain.Location = new System.Drawing.Point(0, 2);
+            this.pnlMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(718, 284);
+            this.pnlMain.Size = new System.Drawing.Size(957, 350);
             this.pnlMain.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::QuanLyNhaSach.Properties.Resources.LHK;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(137, 94);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // frmBaoCaoThang_BaoCaoTon
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(722, 366);
+            this.ClientSize = new System.Drawing.Size(963, 450);
             this.Controls.Add(this.pnlBaoCaoTon);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmBaoCaoThang_BaoCaoTon";
             this.Text = "frmBaoCaoThang_BaoCaoTon";
             this.Load += new System.EventHandler(this.frmBaoCaoThang_BaoCaoTon_Load);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlBaoCaoTon.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

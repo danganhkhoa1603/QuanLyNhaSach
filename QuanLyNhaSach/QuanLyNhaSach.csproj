@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -78,6 +79,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ucBanHang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucBanHang.Designer.cs">
+      <DependentUpon>ucBanHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="ucBaoCaoCongNo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -96,11 +103,35 @@
     <Compile Include="ucNhapSach.Designer.cs">
       <DependentUpon>ucNhapSach.cs</DependentUpon>
     </Compile>
+    <Compile Include="ucPhieuThuTien.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucPhieuThuTien.Designer.cs">
+      <DependentUpon>ucPhieuThuTien.cs</DependentUpon>
+    </Compile>
     <Compile Include="ucThayDoiQuyDinh.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="ucThayDoiQuyDinh.Designer.cs">
       <DependentUpon>ucThayDoiQuyDinh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucThemKhachHang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucThemKhachHang.Designer.cs">
+      <DependentUpon>ucThemKhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucThongTinChiTietHoaDon.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucThongTinChiTietHoaDon.Designer.cs">
+      <DependentUpon>ucThongTinChiTietHoaDon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucTraCuuSach.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucTraCuuSach.Designer.cs">
+      <DependentUpon>ucTraCuuSach.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -127,6 +158,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ucBanHang.resx">
+      <DependentUpon>ucBanHang.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ucBaoCaoCongNo.resx">
       <DependentUpon>ucBaoCaoCongNo.cs</DependentUpon>
     </EmbeddedResource>
@@ -136,8 +170,20 @@
     <EmbeddedResource Include="ucNhapSach.resx">
       <DependentUpon>ucNhapSach.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ucPhieuThuTien.resx">
+      <DependentUpon>ucPhieuThuTien.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ucThayDoiQuyDinh.resx">
       <DependentUpon>ucThayDoiQuyDinh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucThemKhachHang.resx">
+      <DependentUpon>ucThemKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucThongTinChiTietHoaDon.resx">
+      <DependentUpon>ucThongTinChiTietHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucTraCuuSach.resx">
+      <DependentUpon>ucTraCuuSach.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
