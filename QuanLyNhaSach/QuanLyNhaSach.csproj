@@ -96,6 +96,12 @@
     <Compile Include="ucNhapSach.Designer.cs">
       <DependentUpon>ucNhapSach.cs</DependentUpon>
     </Compile>
+    <Compile Include="ucThayDoiQuyDinh.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucThayDoiQuyDinh.Designer.cs">
+      <DependentUpon>ucThayDoiQuyDinh.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -129,6 +135,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ucNhapSach.resx">
       <DependentUpon>ucNhapSach.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucThayDoiQuyDinh.resx">
+      <DependentUpon>ucThayDoiQuyDinh.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
