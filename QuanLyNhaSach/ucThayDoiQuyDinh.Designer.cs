@@ -37,6 +37,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnCapNhat = new System.Windows.Forms.Button();
+            this.btnKhoiPhucMacDinh = new System.Windows.Forms.Button();
+            this.btnDangXuat = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -62,12 +65,15 @@
             // 
             // txt
             // 
+            this.txt.AutoCompleteCustomSource.AddRange(new string[] {
+            "Lượng nhập ít nhất (Mặc định: 150)"});
             this.txt.Location = new System.Drawing.Point(6, 55);
             this.txt.Margin = new System.Windows.Forms.Padding(2);
             this.txt.Multiline = true;
             this.txt.Name = "txt";
             this.txt.Size = new System.Drawing.Size(278, 25);
             this.txt.TabIndex = 15;
+            this.txt.Text = "Lượng nhập ít nhất (Mặc định: 150)";
             // 
             // textBox2
             // 
@@ -77,6 +83,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(304, 25);
             this.textBox2.TabIndex = 17;
+            this.textBox2.Text = "Lượng tồn ít nhất sau khi bán (Mặc định: 20)";
             // 
             // label3
             // 
@@ -96,6 +103,7 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(273, 25);
             this.textBox3.TabIndex = 19;
+            this.textBox3.Text = "Cho phép thu vượt quá số tiền nợ? (Bật/Tắt)";
             // 
             // label4
             // 
@@ -115,6 +123,7 @@
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(304, 25);
             this.textBox4.TabIndex = 20;
+            this.textBox4.Text = "Số tiền nợ tối đa (Mặc định: 20.000)";
             // 
             // textBox1
             // 
@@ -124,11 +133,42 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(278, 25);
             this.textBox1.TabIndex = 21;
+            this.textBox1.Text = "Lượng tồn ít nhất trước khi nhập (Mặc định: < 300)";
+            // 
+            // btnCapNhat
+            // 
+            this.btnCapNhat.Location = new System.Drawing.Point(454, 218);
+            this.btnCapNhat.Name = "btnCapNhat";
+            this.btnCapNhat.Size = new System.Drawing.Size(106, 33);
+            this.btnCapNhat.TabIndex = 22;
+            this.btnCapNhat.Text = "Cập Nhật";
+            this.btnCapNhat.UseVisualStyleBackColor = true;
+            // 
+            // btnKhoiPhucMacDinh
+            // 
+            this.btnKhoiPhucMacDinh.Location = new System.Drawing.Point(298, 218);
+            this.btnKhoiPhucMacDinh.Name = "btnKhoiPhucMacDinh";
+            this.btnKhoiPhucMacDinh.Size = new System.Drawing.Size(123, 33);
+            this.btnKhoiPhucMacDinh.TabIndex = 23;
+            this.btnKhoiPhucMacDinh.Text = "Khôi Phục Mặc Định";
+            this.btnKhoiPhucMacDinh.UseVisualStyleBackColor = true;
+            // 
+            // btnDangXuat
+            // 
+            this.btnDangXuat.Location = new System.Drawing.Point(156, 218);
+            this.btnDangXuat.Name = "btnDangXuat";
+            this.btnDangXuat.Size = new System.Drawing.Size(106, 33);
+            this.btnDangXuat.TabIndex = 24;
+            this.btnDangXuat.Text = "Đăng Xuất";
+            this.btnDangXuat.UseVisualStyleBackColor = true;
             // 
             // ucThayDoiQuyDinh
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnDangXuat);
+            this.Controls.Add(this.btnKhoiPhucMacDinh);
+            this.Controls.Add(this.btnCapNhat);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
@@ -157,5 +197,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnCapNhat;
+        private System.Windows.Forms.Button btnKhoiPhucMacDinh;
+        private System.Windows.Forms.Button btnDangXuat;
     }
 }

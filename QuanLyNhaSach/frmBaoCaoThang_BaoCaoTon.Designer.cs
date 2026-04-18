@@ -35,12 +35,12 @@
             this.btnTraCuuSach = new System.Windows.Forms.Button();
             this.btnBanHang = new System.Windows.Forms.Button();
             this.btnNhapSach = new System.Windows.Forms.Button();
-            this.pnlBaoCaoTon = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pnlBaoCaoTon = new System.Windows.Forms.Panel();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
-            this.pnlBaoCaoTon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pnlBaoCaoTon.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -81,6 +81,7 @@
             this.btnThayDoiQuyDinh.TabIndex = 2;
             this.btnThayDoiQuyDinh.Text = "Thay đổi quy định";
             this.btnThayDoiQuyDinh.UseVisualStyleBackColor = true;
+            this.btnThayDoiQuyDinh.Click += new System.EventHandler(this.btnThayDoiQuyDinh_Click);
             // 
             // btnPhieuThuTien
             // 
@@ -126,14 +127,7 @@
             this.btnNhapSach.TabIndex = 1;
             this.btnNhapSach.Text = "Nhập Sách";
             this.btnNhapSach.UseVisualStyleBackColor = false;
-            // 
-            // pnlBaoCaoTon
-            // 
-            this.pnlBaoCaoTon.Controls.Add(this.pnlMain);
-            this.pnlBaoCaoTon.Location = new System.Drawing.Point(3, 84);
-            this.pnlBaoCaoTon.Name = "pnlBaoCaoTon";
-            this.pnlBaoCaoTon.Size = new System.Drawing.Size(718, 284);
-            this.pnlBaoCaoTon.TabIndex = 4;
+            this.btnNhapSach.Click += new System.EventHandler(this.btnNhapSach_Click);
             // 
             // pictureBox1
             // 
@@ -145,6 +139,14 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            // 
+            // pnlBaoCaoTon
+            // 
+            this.pnlBaoCaoTon.Controls.Add(this.pnlMain);
+            this.pnlBaoCaoTon.Location = new System.Drawing.Point(3, 84);
+            this.pnlBaoCaoTon.Name = "pnlBaoCaoTon";
+            this.pnlBaoCaoTon.Size = new System.Drawing.Size(718, 284);
+            this.pnlBaoCaoTon.TabIndex = 4;
             // 
             // pnlMain
             // 
@@ -164,8 +166,8 @@
             this.Text = "frmBaoCaoThang_BaoCaoTon";
             this.Load += new System.EventHandler(this.frmBaoCaoThang_BaoCaoTon_Load);
             this.panel1.ResumeLayout(false);
-            this.pnlBaoCaoTon.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.pnlBaoCaoTon.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
