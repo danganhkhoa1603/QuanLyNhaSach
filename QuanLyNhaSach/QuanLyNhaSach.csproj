@@ -52,10 +52,46 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmChiTietNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChiTietNhap.Designer.cs">
+      <DependentUpon>frmChiTietNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLichSuNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLichSuNhap.Designer.cs">
+      <DependentUpon>frmLichSuNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmXemChiTiet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmXemChiTiet.Designer.cs">
+      <DependentUpon>frmXemChiTiet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NhapSach.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NhapSach.Designer.cs">
+      <DependentUpon>NhapSach.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmChiTietNhap.resx">
+      <DependentUpon>frmChiTietNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLichSuNhap.resx">
+      <DependentUpon>frmLichSuNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmXemChiTiet.resx">
+      <DependentUpon>frmXemChiTiet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NhapSach.resx">
+      <DependentUpon>NhapSach.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -85,6 +121,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\c25ba372-1c0e-4e56-9d05-3648ac5a751d.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Profile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Unlock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LHK.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
