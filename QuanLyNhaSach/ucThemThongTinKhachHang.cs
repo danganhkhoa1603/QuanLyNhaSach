@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace QuanLyNhaSach
 {
-    public partial class ucThemKhachHang : UserControl
+    public partial class ucThemThongTinKhachHang : UserControl
     {
-        public ucThemKhachHang()
+        public ucThemThongTinKhachHang()
         {
             InitializeComponent();
         }

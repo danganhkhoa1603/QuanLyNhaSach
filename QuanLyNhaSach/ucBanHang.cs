@@ -42,8 +42,8 @@ namespace QuanLyNhaSach
 
         private void btnThemKH_Click(object sender, EventArgs e)
         {
-            ucThemKhachHang1.Visible = true;
-            ucThemKhachHang1.BringToFront(); 
+            ucThemThongTinKhachHang1.Visible = true;
+            ucThemThongTinKhachHang1.BringToFront();
         }
 
         private void ucThemKhachHang1_Load(object sender, EventArgs e)

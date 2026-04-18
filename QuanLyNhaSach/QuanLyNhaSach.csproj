@@ -103,11 +103,11 @@
     <Compile Include="ucThayDoiQuyDinh.Designer.cs">
       <DependentUpon>ucThayDoiQuyDinh.cs</DependentUpon>
     </Compile>
-    <Compile Include="ucThemKhachHang.cs">
+    <Compile Include="ucThemThongTinKhachHang.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ucThemKhachHang.Designer.cs">
-      <DependentUpon>ucThemKhachHang.cs</DependentUpon>
+    <Compile Include="ucThemThongTinKhachHang.Designer.cs">
+      <DependentUpon>ucThemThongTinKhachHang.cs</DependentUpon>
     </Compile>
     <Compile Include="ucThongTinChiTietHoaDon.cs">
       <SubType>UserControl</SubType>
@@ -170,8 +170,8 @@
     <EmbeddedResource Include="ucThayDoiQuyDinh.resx">
       <DependentUpon>ucThayDoiQuyDinh.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ucThemKhachHang.resx">
-      <DependentUpon>ucThemKhachHang.cs</DependentUpon>
+    <EmbeddedResource Include="ucThemThongTinKhachHang.resx">
+      <DependentUpon>ucThemThongTinKhachHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucThongTinChiTietHoaDon.resx">
       <DependentUpon>ucThongTinChiTietHoaDon.cs</DependentUpon>
