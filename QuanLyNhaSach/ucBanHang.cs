@@ -45,5 +45,15 @@ namespace QuanLyNhaSach
             ucThemKhachHang1.Visible = true;
             ucThemKhachHang1.BringToFront(); 
         }
+
+        private void ucThemKhachHang1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ucThongTinChiTietHoaDon1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

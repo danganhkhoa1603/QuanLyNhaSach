@@ -10,23 +10,23 @@ using System.Windows.Forms;
 
 namespace QuanLyNhaSach
 {
-    public partial class frmLichSuNhap : Form
+    public partial class ucLichSuNhap : UserControl
     {
-        public frmLichSuNhap()
+        public ucLichSuNhap()
         {
             InitializeComponent();
         }
 
         private void btnXemChiTiet_Click(object sender, EventArgs e)
         {
-            frmXemChiTiet frm = new frmXemChiTiet();
-            frm.StartPosition = FormStartPosition.CenterParent; 
-            frm.ShowDialog();
+            var frm = (frmBaoCaoThang_BaoCaoTon)this.FindForm();
+            frm.HienThiUserControl(new ucXemChiTiet());
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
-            this.Close();
+            var frm = (frmBaoCaoThang_BaoCaoTon)this.FindForm();
+            frm.HienThiUserControl(new ucNhapSach());
         }
     }
 }

@@ -16,5 +16,17 @@ namespace QuanLyNhaSach
         {
             InitializeComponent();
         }
+
+        private void btnNhapSachMoi_Click(object sender, EventArgs e)
+        {
+            var frm = (frmBaoCaoThang_BaoCaoTon)this.FindForm();
+            frm.HienThiUserControl(new ucNhapSachMoi());
+        }
+
+        private void btnLichSu_Click(object sender, EventArgs e)
+        {
+            var frm = (frmBaoCaoThang_BaoCaoTon)this.FindForm();
+            frm.HienThiUserControl(new ucLichSuNhap());
+        }
     }
 }

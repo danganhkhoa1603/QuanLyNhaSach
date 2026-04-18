@@ -10,21 +10,17 @@ using System.Windows.Forms;
 
 namespace QuanLyNhaSach
 {
-    public partial class frmXemChiTiet : Form
+    public partial class ucXemChiTiet : UserControl
     {
-        public frmXemChiTiet()
+        public ucXemChiTiet()
         {
             InitializeComponent();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void btnThoat_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Close();
+            var frm = (frmBaoCaoThang_BaoCaoTon)this.FindForm();
+            frm.HienThiUserControl(new ucLichSuNhap());
         }
     }
 }

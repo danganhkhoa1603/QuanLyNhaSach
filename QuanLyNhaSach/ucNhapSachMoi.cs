@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace QuanLyNhaSach
 {
-    public partial class frmChiTietNhap : Form
+    public partial class ucNhapSachMoi : UserControl
     {
-        public frmChiTietNhap()
+        public ucNhapSachMoi()
         {
             InitializeComponent();
-        }
-
-        private void btnHuy_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void frmChiTietNhap_Load(object sender, EventArgs e)
-        {
-            
         }
     }
 }

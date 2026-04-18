@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnLichSu = new System.Windows.Forms.Button();
             this.btnNhapSachMoi = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -38,6 +38,7 @@
             this.colTacGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
+            this.ucNhapSachMoi1 = new QuanLyNhaSach.ucNhapSachMoi();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,6 +52,7 @@
             this.btnLichSu.TabIndex = 9;
             this.btnLichSu.Text = "Lịch Sử";
             this.btnLichSu.UseVisualStyleBackColor = true;
+            this.btnLichSu.Click += new System.EventHandler(this.btnLichSu_Click);
             // 
             // btnNhapSachMoi
             // 
@@ -64,20 +66,21 @@
             this.btnNhapSachMoi.TabIndex = 8;
             this.btnNhapSachMoi.Text = "+Nhập Sách Mới";
             this.btnNhapSachMoi.UseVisualStyleBackColor = false;
+            this.btnNhapSachMoi.Click += new System.EventHandler(this.btnNhapSachMoi_Click);
             // 
             // dataGridView1
             // 
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colID,
@@ -139,10 +142,19 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "LẬP PHIẾU NHẬP SÁCH";
             // 
+            // ucNhapSachMoi1
+            // 
+            this.ucNhapSachMoi1.Location = new System.Drawing.Point(202, -61);
+            this.ucNhapSachMoi1.Name = "ucNhapSachMoi1";
+            this.ucNhapSachMoi1.Size = new System.Drawing.Size(289, 345);
+            this.ucNhapSachMoi1.TabIndex = 10;
+            this.ucNhapSachMoi1.Visible = false;
+            // 
             // ucNhapSach
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.ucNhapSachMoi1);
             this.Controls.Add(this.btnLichSu);
             this.Controls.Add(this.btnNhapSachMoi);
             this.Controls.Add(this.dataGridView1);
@@ -166,5 +178,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colTacGia;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSoLuong;
         private System.Windows.Forms.Label label1;
+        private ucNhapSachMoi ucNhapSachMoi1;
     }
 }
