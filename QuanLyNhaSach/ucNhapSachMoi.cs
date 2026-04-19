@@ -15,11 +15,38 @@ namespace QuanLyNhaSach
         public ucNhapSachMoi()
         {
             InitializeComponent();
+            
         }
+        ucNhapSach grid;
 
+        public void SetGrid(ucNhapSach g)
+        {
+            grid = g;
+        }
         private void btnHuy_Click(object sender, EventArgs e)
         {
             this.Visible = false;
         }
+
+        private void btnNhap_Click(object sender, EventArgs e)
+        {
+            int soLuong;
+            if (!int.TryParse(txtSoLuongNhap.Text, out soLuong))
+            {
+                MessageBox.Show("Số lượng phải là số!");
+                return;
+            }
+
+            grid.ThemSach(
+                txtTenSach.Text,
+                txtTheLoai.Text,
+                txtTacGia.Text,
+                soLuong,
+                decimal.Parse(txtDonGia.Text)
+            );
+
+            this.ParentForm.Close(); // đóng popup
+        }
+
     }
 }

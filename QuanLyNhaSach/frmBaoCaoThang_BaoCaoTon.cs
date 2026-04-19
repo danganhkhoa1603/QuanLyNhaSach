@@ -15,6 +15,7 @@ namespace QuanLyNhaSach
         public frmBaoCaoThang_BaoCaoTon()
         {
             InitializeComponent();
+            btnNhapSach_Click(null, null);
         }
 
         // Hàm dùng chung để hiển thị bất kỳ UserControl nào

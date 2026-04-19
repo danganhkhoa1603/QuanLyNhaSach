@@ -104,6 +104,11 @@ private void btnThoat_Click(object sender, EventArgs e)
                     txtMatKhau.UseSystemPasswordChar = true;
             }
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
     }
 
