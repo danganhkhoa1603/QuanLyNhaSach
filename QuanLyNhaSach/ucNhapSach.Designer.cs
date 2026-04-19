@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnLichSu = new System.Windows.Forms.Button();
             this.btnNhapSachMoi = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -45,10 +45,10 @@
             // btnLichSu
             // 
             this.btnLichSu.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLichSu.Location = new System.Drawing.Point(561, 274);
-            this.btnLichSu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLichSu.Location = new System.Drawing.Point(421, 223);
+            this.btnLichSu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnLichSu.Name = "btnLichSu";
-            this.btnLichSu.Size = new System.Drawing.Size(139, 49);
+            this.btnLichSu.Size = new System.Drawing.Size(104, 40);
             this.btnLichSu.TabIndex = 9;
             this.btnLichSu.Text = "Lịch Sử";
             this.btnLichSu.UseVisualStyleBackColor = true;
@@ -59,10 +59,10 @@
             this.btnNhapSachMoi.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnNhapSachMoi.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNhapSachMoi.ForeColor = System.Drawing.Color.Blue;
-            this.btnNhapSachMoi.Location = new System.Drawing.Point(727, 257);
-            this.btnNhapSachMoi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnNhapSachMoi.Location = new System.Drawing.Point(545, 209);
+            this.btnNhapSachMoi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnNhapSachMoi.Name = "btnNhapSachMoi";
-            this.btnNhapSachMoi.Size = new System.Drawing.Size(172, 66);
+            this.btnNhapSachMoi.Size = new System.Drawing.Size(129, 54);
             this.btnNhapSachMoi.TabIndex = 8;
             this.btnNhapSachMoi.Text = "+Nhập Sách Mới";
             this.btnNhapSachMoi.UseVisualStyleBackColor = false;
@@ -73,14 +73,14 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colID,
@@ -88,12 +88,12 @@
             this.colTheLoai,
             this.colTacGia,
             this.colSoLuong});
-            this.dataGridView1.Location = new System.Drawing.Point(52, 38);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataGridView1.Location = new System.Drawing.Point(39, 31);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(847, 214);
+            this.dataGridView1.Size = new System.Drawing.Size(635, 174);
             this.dataGridView1.TabIndex = 7;
             // 
             // colID
@@ -135,33 +135,33 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(328, 4);
+            this.label1.Location = new System.Drawing.Point(246, 3);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(269, 31);
+            this.label1.Size = new System.Drawing.Size(225, 25);
             this.label1.TabIndex = 6;
             this.label1.Text = "LẬP PHIẾU NHẬP SÁCH";
             // 
             // ucNhapSachMoi1
             // 
-            this.ucNhapSachMoi1.Location = new System.Drawing.Point(279, -59);
-            this.ucNhapSachMoi1.Margin = new System.Windows.Forms.Padding(5);
+            this.ucNhapSachMoi1.Location = new System.Drawing.Point(225, -39);
+            this.ucNhapSachMoi1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ucNhapSachMoi1.Name = "ucNhapSachMoi1";
-            this.ucNhapSachMoi1.Size = new System.Drawing.Size(385, 425);
+            this.ucNhapSachMoi1.Size = new System.Drawing.Size(289, 345);
             this.ucNhapSachMoi1.TabIndex = 10;
             this.ucNhapSachMoi1.Visible = false;
             // 
             // ucNhapSach
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.ucNhapSachMoi1);
             this.Controls.Add(this.btnLichSu);
             this.Controls.Add(this.btnNhapSachMoi);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ucNhapSach";
-            this.Size = new System.Drawing.Size(957, 350);
+            this.Size = new System.Drawing.Size(718, 284);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
