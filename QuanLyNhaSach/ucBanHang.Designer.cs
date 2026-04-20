@@ -187,6 +187,7 @@
             // ucThemThongTinKhachHang1
             // 
             this.ucThemThongTinKhachHang1.Location = new System.Drawing.Point(303, 0);
+            this.ucThemThongTinKhachHang1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ucThemThongTinKhachHang1.Name = "ucThemThongTinKhachHang1";
             this.ucThemThongTinKhachHang1.Size = new System.Drawing.Size(329, 382);
             this.ucThemThongTinKhachHang1.TabIndex = 9;
@@ -220,8 +221,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.txtTienDaNhan);
-            this.Controls.Add(this.txtTongHoaDon);
             this.Controls.Add(this.ucThemThongTinKhachHang1);
             this.Controls.Add(this.ucThongTinChiTietHoaDon1);
             this.Controls.Add(this.dataGridView1);
@@ -233,6 +232,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtTienDaNhan);
+            this.Controls.Add(this.txtTongHoaDon);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ucBanHang";
             this.Size = new System.Drawing.Size(957, 350);
