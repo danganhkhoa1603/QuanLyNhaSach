@@ -46,7 +46,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(815, 9);
+            this.label1.Location = new System.Drawing.Point(600, 9);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(522, 45);
@@ -57,7 +57,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Tahoma", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(450, 180);
+            this.label2.Location = new System.Drawing.Point(150, 150);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(179, 21);
             this.label2.TabIndex = 14;
@@ -68,22 +68,22 @@
             this.txt.AutoCompleteCustomSource.AddRange(new string[] {
             "Lượng nhập ít nhất (Mặc định: 150)"});
             this.txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt.Location = new System.Drawing.Point(450, 215);
+            this.txt.Location = new System.Drawing.Point(150, 190);
             this.txt.Margin = new System.Windows.Forms.Padding(2);
             this.txt.Multiline = true;
             this.txt.Name = "txt";
-            this.txt.Size = new System.Drawing.Size(450, 40);
+            this.txt.Size = new System.Drawing.Size(500, 40);
             this.txt.TabIndex = 15;
             this.txt.Text = "Lượng nhập ít nhất (Mặc định: 150)";
             // 
             // textBox2
             // 
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(1000, 215);
+            this.textBox2.Location = new System.Drawing.Point(870, 190);
             this.textBox2.Margin = new System.Windows.Forms.Padding(2);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(450, 40);
+            this.textBox2.Size = new System.Drawing.Size(500, 40);
             this.textBox2.TabIndex = 17;
             this.textBox2.Text = "Lượng tồn ít nhất sau khi bán (Mặc định: 20)";
             // 
@@ -91,7 +91,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tahoma", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(1000, 180);
+            this.label3.Location = new System.Drawing.Point(870, 150);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(168, 21);
             this.label3.TabIndex = 16;
@@ -100,11 +100,11 @@
             // textBox3
             // 
             this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(726, 415);
+            this.textBox3.Location = new System.Drawing.Point(510, 390);
             this.textBox3.Margin = new System.Windows.Forms.Padding(2);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(450, 45);
+            this.textBox3.Size = new System.Drawing.Size(500, 40);
             this.textBox3.TabIndex = 19;
             this.textBox3.Text = "Cho phép thu vượt quá số tiền nợ? (Bật/Tắt)";
             // 
@@ -112,7 +112,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Tahoma", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(726, 380);
+            this.label4.Location = new System.Drawing.Point(510, 350);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(159, 21);
             this.label4.TabIndex = 18;
@@ -122,48 +122,51 @@
             // textBox4
             // 
             this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(1000, 265);
+            this.textBox4.Location = new System.Drawing.Point(870, 250);
             this.textBox4.Margin = new System.Windows.Forms.Padding(2);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(450, 40);
+            this.textBox4.Size = new System.Drawing.Size(500, 40);
             this.textBox4.TabIndex = 20;
             this.textBox4.Text = "Số tiền nợ tối đa (Mặc định: 20.000)";
             // 
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(450, 265);
+            this.textBox1.Location = new System.Drawing.Point(150, 250);
             this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(450, 40);
+            this.textBox1.Size = new System.Drawing.Size(500, 40);
             this.textBox1.TabIndex = 21;
             this.textBox1.Text = "Lượng tồn ít nhất trước khi nhập (Mặc định: < 300)";
             // 
             // btnCapNhat
             // 
-            this.btnCapNhat.Location = new System.Drawing.Point(1120, 600);
+            this.btnCapNhat.Font = new System.Drawing.Font("Tahoma", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCapNhat.Location = new System.Drawing.Point(1070, 600);
             this.btnCapNhat.Name = "btnCapNhat";
-            this.btnCapNhat.Size = new System.Drawing.Size(200, 60);
+            this.btnCapNhat.Size = new System.Drawing.Size(230, 55);
             this.btnCapNhat.TabIndex = 22;
             this.btnCapNhat.Text = "Cập Nhật";
             this.btnCapNhat.UseVisualStyleBackColor = true;
             // 
             // btnKhoiPhucMacDinh
             // 
-            this.btnKhoiPhucMacDinh.Location = new System.Drawing.Point(850, 600);
+            this.btnKhoiPhucMacDinh.Font = new System.Drawing.Font("Tahoma", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKhoiPhucMacDinh.Location = new System.Drawing.Point(645, 600);
             this.btnKhoiPhucMacDinh.Name = "btnKhoiPhucMacDinh";
-            this.btnKhoiPhucMacDinh.Size = new System.Drawing.Size(200, 60);
+            this.btnKhoiPhucMacDinh.Size = new System.Drawing.Size(230, 55);
             this.btnKhoiPhucMacDinh.TabIndex = 23;
             this.btnKhoiPhucMacDinh.Text = "Khôi Phục Mặc Định";
             this.btnKhoiPhucMacDinh.UseVisualStyleBackColor = true;
             // 
             // btnDangXuat
             // 
-            this.btnDangXuat.Location = new System.Drawing.Point(580, 600);
+            this.btnDangXuat.Font = new System.Drawing.Font("Tahoma", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDangXuat.Location = new System.Drawing.Point(220, 600);
             this.btnDangXuat.Name = "btnDangXuat";
-            this.btnDangXuat.Size = new System.Drawing.Size(200, 60);
+            this.btnDangXuat.Size = new System.Drawing.Size(230, 55);
             this.btnDangXuat.TabIndex = 24;
             this.btnDangXuat.Text = "Đăng Xuất";
             this.btnDangXuat.UseVisualStyleBackColor = true;
@@ -186,7 +189,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "ucThayDoiQuyDinh";
-            this.Size = new System.Drawing.Size(1902, 916);
+            this.Size = new System.Drawing.Size(1520, 700);
             this.Load += new System.EventHandler(this.ucThayDoiQuyDinh_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

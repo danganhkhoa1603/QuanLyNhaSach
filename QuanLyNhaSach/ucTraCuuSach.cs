@@ -16,5 +16,20 @@ namespace QuanLyNhaSach
         {
             InitializeComponent();
         }
+
+        private void ucTraCuuSach_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbTimKiem_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
