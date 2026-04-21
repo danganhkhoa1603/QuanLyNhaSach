@@ -25,8 +25,9 @@ namespace QuanLyNhaSach
 
         private void btnXemChiTietBanHang_Click(object sender, EventArgs e)
         {
-            
-            }
+            var frm = (frmBaoCaoThang_BaoCaoTon)this.FindForm();
+            frm.HienThiUserControl(new ucXemChiTietBanHang());
+        }
         }
         }
     
