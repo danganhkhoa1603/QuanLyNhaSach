@@ -98,6 +98,12 @@
     <Compile Include="ucBaoCaoTon.Designer.cs">
       <DependentUpon>ucBaoCaoTon.cs</DependentUpon>
     </Compile>
+    <Compile Include="ucLichSuBanHang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucLichSuBanHang.Designer.cs">
+      <DependentUpon>ucLichSuBanHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="ucNhapSach.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -152,6 +158,12 @@
     <Compile Include="ucXemChiTiet.Designer.cs">
       <DependentUpon>ucXemChiTiet.cs</DependentUpon>
     </Compile>
+    <Compile Include="ucXemChiTietBanHang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucXemChiTietBanHang.Designer.cs">
+      <DependentUpon>ucXemChiTietBanHang.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -176,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ucBaoCaoTon.resx">
       <DependentUpon>ucBaoCaoTon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucLichSuBanHang.resx">
+      <DependentUpon>ucLichSuBanHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucNhapSach.resx">
       <DependentUpon>ucNhapSach.cs</DependentUpon>
@@ -203,6 +218,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ucXemChiTiet.resx">
       <DependentUpon>ucXemChiTiet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucXemChiTietBanHang.resx">
+      <DependentUpon>ucXemChiTietBanHang.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="packages.config" />

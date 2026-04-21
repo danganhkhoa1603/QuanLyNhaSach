@@ -60,5 +60,11 @@ namespace QuanLyNhaSach
         {
 
         }
+
+        private void btnLichSuBanHang_Click(object sender, EventArgs e)
+        {
+            var frm = (frmBaoCaoThang_BaoCaoTon)this.FindForm();
+            frm.HienThiUserControl(new ucLichSuBanHang());
+        }
     }
 }

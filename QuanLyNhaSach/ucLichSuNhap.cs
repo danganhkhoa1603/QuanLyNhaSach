@@ -71,5 +71,7 @@ namespace QuanLyNhaSach
             var frm = (frmBaoCaoThang_BaoCaoTon)this.FindForm();
             frm.HienThiUserControl(new ucNhapSach());
         }
+
+       
     }
 }
