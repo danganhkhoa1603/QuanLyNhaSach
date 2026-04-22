@@ -125,10 +125,10 @@ namespace QuanLyNhaSach
 
                 try
                 {
-                    // 🔥 Tạo mã hóa đơn
+                    //  Tạo mã hóa đơn
                     string maHoaDon = "HD" + DateTime.Now.ToString("yyyyMMddHHmmss");
 
-                    // 🔥 1. Lưu hóa đơn
+                    //  1. Lưu hóa đơn
                     string queryHD = @"INSERT INTO HoaDon(MaHoaDon, KhachHangID, NgayLap)
                                OUTPUT INSERTED.ID
                                VALUES (@MaHD, @KHID, GETDATE())";
@@ -139,12 +139,12 @@ namespace QuanLyNhaSach
 
                     int hoaDonID = (int)cmdHD.ExecuteScalar();
 
-                    // 🔥 2. Lưu chi tiết hóa đơn
+                    // 2. Lưu chi tiết hóa đơn
                     foreach (DataRow row in gioHang.Rows)
                     {
                         SqlCommand cmdCT = new SqlCommand(
                             @"INSERT INTO ChiTietHoaDon(HoaDonID, SachID, SoLuong, DonGia)
-                      VALUES (@HDID, @SachID, @SL, @Gia)", conn, tran);
+                            VALUES (@HDID, @SachID, @SL, @Gia)", conn, tran);
 
                         cmdCT.Parameters.AddWithValue("@HDID", hoaDonID);
                         cmdCT.Parameters.AddWithValue("@SachID", row["SachID"]);
@@ -152,19 +152,49 @@ namespace QuanLyNhaSach
                         cmdCT.Parameters.AddWithValue("@Gia", row["DonGia"]);
 
                         cmdCT.ExecuteNonQuery();
+
+                        SqlCommand checkSL = new SqlCommand(
+                        "SELECT SoLuong FROM Sach WHERE ID = @SachID", conn, tran);
+                        checkSL.Parameters.AddWithValue("@SachID", row["SachID"]);
+
+                        int tonKho = (int)checkSL.ExecuteScalar();
+                        int soLuongBan = Convert.ToInt32(row["SoLuong"]);
+
+                        if (tonKho < soLuongBan)
+                        {
+                            throw new Exception("Sách không đủ số lượng!");
+                        }
+
+                        // TRỪ SỐ LƯỢNG SÁCH
+                        SqlCommand cmdUpdateSach = new SqlCommand(
+                            @"UPDATE Sach
+                            SET SoLuong = SoLuong - @SL
+                            WHERE ID = @SachID", conn, tran);
+
+                        cmdUpdateSach.Parameters.AddWithValue("@SL", row["SoLuong"]);
+                        cmdUpdateSach.Parameters.AddWithValue("@SachID", row["SachID"]);
+
+                        cmdUpdateSach.ExecuteNonQuery();
                     }
 
-                    // 🔥 3. Tính tổng tiền
+                    // 3. Tính tổng tiền (an toàn)
                     decimal tongTien = gioHang.AsEnumerable()
-                        .Sum(r => (decimal)r["ThanhTien"]);
+                        .Sum(r => Convert.ToDecimal(r["ThanhTien"]));
 
-                    decimal noPhatSinh = tongTien - tienKhachTra;
+                    // 4. Tính phát sinh công nợ
+                    decimal phatSinh = tongTien - tienKhachTra;
 
-                    // 🔥 4. Xử lý công nợ
-                    if (noPhatSinh > 0)
+                    // làm tròn tránh lỗi số lẻ
+                    phatSinh = Math.Round(phatSinh, 0);
+
+                    // nếu = 0 thì không xử lý công nợ
+                    if (phatSinh != 0)
                     {
-                        string check = @"SELECT ID, NoCuoi FROM BaoCaoCongNo
-                                 WHERE Thang = @Thang AND Nam = @Nam AND KhachHangID = @KHID";
+                        string check = @"SELECT ID, NoCuoi 
+                     FROM BaoCaoCongNo
+                     WHERE Thang = @Thang 
+                       AND Nam = @Nam 
+                       AND KhachHangID = @KHID";
 
                         SqlCommand cmdCheck = new SqlCommand(check, conn, tran);
                         cmdCheck.Parameters.AddWithValue("@Thang", DateTime.Now.Month);
@@ -179,21 +209,22 @@ namespace QuanLyNhaSach
                             if (reader.Read())
                             {
                                 id = (int)reader["ID"];
-                                noCuoiCu = (decimal)reader["NoCuoi"];
+                                noCuoiCu = Convert.ToDecimal(reader["NoCuoi"]);
                             }
                         }
 
                         if (id.HasValue)
                         {
-                            decimal noMoi = noCuoiCu + noPhatSinh;
+                            // 🔥 CẬP NHẬT
+                            decimal noMoi = noCuoiCu + phatSinh;
 
                             SqlCommand cmdUpdate = new SqlCommand(
                                 @"UPDATE BaoCaoCongNo
-                          SET PhatSinh = PhatSinh + @PhatSinh,
-                              NoCuoi = @NoMoi
-                          WHERE ID = @ID", conn, tran);
+                                  SET PhatSinh = PhatSinh + @PhatSinh,
+                                      NoCuoi = @NoMoi
+                                  WHERE ID = @ID", conn, tran);
 
-                            cmdUpdate.Parameters.AddWithValue("@PhatSinh", noPhatSinh);
+                            cmdUpdate.Parameters.AddWithValue("@PhatSinh", phatSinh);
                             cmdUpdate.Parameters.AddWithValue("@NoMoi", noMoi);
                             cmdUpdate.Parameters.AddWithValue("@ID", id.Value);
 
@@ -201,16 +232,40 @@ namespace QuanLyNhaSach
                         }
                         else
                         {
+                            // 🔥 THÊM MỚI
+                            decimal noDau = 0;
+                            
+                            // 🔍 Lấy nợ cuối tháng trước
+                            string getNoDauQuery = @"
+                                SELECT TOP 1 NoCuoi 
+                                FROM BaoCaoCongNo
+                                WHERE KhachHangID = @KHID
+                                ORDER BY Nam DESC, Thang DESC";
+
+                            SqlCommand cmdNoDau = new SqlCommand(getNoDauQuery, conn, tran);
+                            cmdNoDau.Parameters.AddWithValue("@KHID", currentKhachHangID);
+
+                            object result = cmdNoDau.ExecuteScalar();
+                            if (result != null)
+                            {
+                                noDau = Convert.ToDecimal(result);
+                            }
+
+                            // Tính nợ mới
+                            decimal noCuoi = noDau + phatSinh;
+
+                            // INSERT đúng chuẩn
                             SqlCommand cmdInsert = new SqlCommand(
                                 @"INSERT INTO BaoCaoCongNo
-                          (Thang, Nam, KhachHangID, NoDau, PhatSinh, NoCuoi)
-                          VALUES (@Thang, @Nam, @KHID, 0, @PhatSinh, @NoCuoi)", conn, tran);
+                                  (Thang, Nam, KhachHangID, NoDau, PhatSinh, NoCuoi)
+                                  VALUES (@Thang, @Nam, @KHID, @NoDau, @PhatSinh, @NoCuoi)", conn, tran);
 
                             cmdInsert.Parameters.AddWithValue("@Thang", DateTime.Now.Month);
                             cmdInsert.Parameters.AddWithValue("@Nam", DateTime.Now.Year);
                             cmdInsert.Parameters.AddWithValue("@KHID", currentKhachHangID);
-                            cmdInsert.Parameters.AddWithValue("@PhatSinh", noPhatSinh);
-                            cmdInsert.Parameters.AddWithValue("@NoCuoi", noPhatSinh);
+                            cmdInsert.Parameters.AddWithValue("@NoDau", noDau);
+                            cmdInsert.Parameters.AddWithValue("@PhatSinh", phatSinh);
+                            cmdInsert.Parameters.AddWithValue("@NoCuoi", noCuoi);
 
                             cmdInsert.ExecuteNonQuery();
                         }
@@ -226,6 +281,7 @@ namespace QuanLyNhaSach
                     txtTienDaNhan.Text = "";
                     txtTenKhachHang.Text = "";
                     currentKhachHangID = 0;
+                    txtTongHoaDon.Text = "0";
                 }
                 catch (Exception ex)
                 {

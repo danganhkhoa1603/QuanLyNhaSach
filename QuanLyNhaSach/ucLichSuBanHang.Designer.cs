@@ -39,28 +39,33 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(654, 0);
+            this.label1.Location = new System.Drawing.Point(490, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(353, 54);
+            this.label1.Size = new System.Drawing.Size(283, 45);
             this.label1.TabIndex = 0;
             this.label1.Text = "Lịch Sử Bán Hàng";
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(65, 73);
+            this.dataGridView1.Location = new System.Drawing.Point(49, 59);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1820, 580);
+            this.dataGridView1.Size = new System.Drawing.Size(1365, 471);
             this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
-            this.button1.Location = new System.Drawing.Point(1519, 709);
+            this.button1.Location = new System.Drawing.Point(1139, 576);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(153, 64);
+            this.button1.Size = new System.Drawing.Size(115, 52);
             this.button1.TabIndex = 2;
             this.button1.Text = "Quay Lại";
             this.button1.UseVisualStyleBackColor = true;
@@ -69,9 +74,10 @@
             // btnXemChiTietBanHang
             // 
             this.btnXemChiTietBanHang.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
-            this.btnXemChiTietBanHang.Location = new System.Drawing.Point(1693, 707);
+            this.btnXemChiTietBanHang.Location = new System.Drawing.Point(1270, 574);
+            this.btnXemChiTietBanHang.Margin = new System.Windows.Forms.Padding(2);
             this.btnXemChiTietBanHang.Name = "btnXemChiTietBanHang";
-            this.btnXemChiTietBanHang.Size = new System.Drawing.Size(160, 66);
+            this.btnXemChiTietBanHang.Size = new System.Drawing.Size(120, 54);
             this.btnXemChiTietBanHang.TabIndex = 3;
             this.btnXemChiTietBanHang.Text = "Xem Chi Tiết";
             this.btnXemChiTietBanHang.UseVisualStyleBackColor = true;
@@ -79,14 +85,15 @@
             // 
             // ucLichSuBanHang
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnXemChiTietBanHang);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ucLichSuBanHang";
-            this.Size = new System.Drawing.Size(1920, 860);
+            this.Size = new System.Drawing.Size(1440, 699);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
