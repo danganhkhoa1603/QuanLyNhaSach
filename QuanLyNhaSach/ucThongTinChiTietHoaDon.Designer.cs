@@ -57,6 +57,7 @@
             this.txtTenSach.Name = "txtTenSach";
             this.txtTenSach.Size = new System.Drawing.Size(247, 22);
             this.txtTenSach.TabIndex = 1;
+            this.txtTenSach.TextChanged += new System.EventHandler(this.txtTenSach_TextChanged);
             // 
             // txtTheLoai
             // 
@@ -134,6 +135,7 @@
             this.btnNhap.TabIndex = 5;
             this.btnNhap.Text = "Nhập";
             this.btnNhap.UseVisualStyleBackColor = false;
+            this.btnNhap.Click += new System.EventHandler(this.btnNhap_Click);
             // 
             // ucThongTinChiTietHoaDon
             // 
