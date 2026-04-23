@@ -42,12 +42,12 @@ namespace QuanLyNhaSach
             // Thiết lập cấu trúc DataTable cho giỏ hàng
             if (gioHang.Columns.Count == 0)
             {
-                gioHang.Columns.Add("SachID", typeof(int));
-                gioHang.Columns.Add("TenSach", typeof(string));
-                gioHang.Columns.Add("TheLoai", typeof(string));
-                gioHang.Columns.Add("SoLuong", typeof(int));
-                gioHang.Columns.Add("DonGia", typeof(decimal));
-                gioHang.Columns.Add("ThanhTien", typeof(decimal));
+                gioHang.Columns.Add("Sách ID", typeof(int));
+                gioHang.Columns.Add("Tên Sách", typeof(string));
+                gioHang.Columns.Add("Thể Loại", typeof(string));
+                gioHang.Columns.Add("Số Lượng", typeof(int));
+                gioHang.Columns.Add("Đơn Giá", typeof(decimal));
+                gioHang.Columns.Add("Thành Tiền", typeof(decimal));
             }
 
             dgvGioHang.DataSource = gioHang;

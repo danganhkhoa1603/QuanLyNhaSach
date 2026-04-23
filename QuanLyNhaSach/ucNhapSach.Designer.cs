@@ -30,17 +30,13 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnLichSu = new System.Windows.Forms.Button();
             this.btnNhapSachMoi = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTenSach = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTheLoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTacGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.btnLuu = new System.Windows.Forms.Button();
+            this.btnImport = new System.Windows.Forms.Button();
             this.ucNhapSachMoi1 = new QuanLyNhaSach.ucNhapSachMoi();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -85,13 +81,6 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colID,
-            this.colTenSach,
-            this.colTheLoai,
-            this.colTacGia,
-            this.colSoLuong,
-            this.colDonGia});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -103,52 +92,19 @@
             this.dataGridView1.Location = new System.Drawing.Point(50, 130);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView1.Name = "dataGridView1";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(1820, 580);
             this.dataGridView1.TabIndex = 7;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // colID
-            // 
-            this.colID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colID.HeaderText = "ID";
-            this.colID.MinimumWidth = 6;
-            this.colID.Name = "colID";
-            // 
-            // colTenSach
-            // 
-            this.colTenSach.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colTenSach.HeaderText = "Tên Sách";
-            this.colTenSach.MinimumWidth = 6;
-            this.colTenSach.Name = "colTenSach";
-            // 
-            // colTheLoai
-            // 
-            this.colTheLoai.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colTheLoai.HeaderText = "Thể Loại";
-            this.colTheLoai.MinimumWidth = 6;
-            this.colTheLoai.Name = "colTheLoai";
-            // 
-            // colTacGia
-            // 
-            this.colTacGia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colTacGia.HeaderText = "Tác Giả";
-            this.colTacGia.MinimumWidth = 6;
-            this.colTacGia.Name = "colTacGia";
-            // 
-            // colSoLuong
-            // 
-            this.colSoLuong.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colSoLuong.HeaderText = "Số Lượng";
-            this.colSoLuong.MinimumWidth = 6;
-            this.colSoLuong.Name = "colSoLuong";
-            // 
-            // colDonGia
-            // 
-            this.colDonGia.HeaderText = "Đơn giá";
-            this.colDonGia.MinimumWidth = 6;
-            this.colDonGia.Name = "colDonGia";
             // 
             // label1
             // 
@@ -172,6 +128,16 @@
             this.btnLuu.UseVisualStyleBackColor = true;
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
+            // btnImport
+            // 
+            this.btnImport.Location = new System.Drawing.Point(923, 715);
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Size = new System.Drawing.Size(157, 54);
+            this.btnImport.TabIndex = 12;
+            this.btnImport.Text = "Import";
+            this.btnImport.UseVisualStyleBackColor = true;
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
+            // 
             // ucNhapSachMoi1
             // 
             this.ucNhapSachMoi1.Location = new System.Drawing.Point(851, 191);
@@ -185,6 +151,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnImport);
             this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.ucNhapSachMoi1);
             this.Controls.Add(this.btnLichSu);
@@ -194,6 +161,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ucNhapSach";
             this.Size = new System.Drawing.Size(1920, 860);
+            this.Load += new System.EventHandler(this.ucNhapSach_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -207,12 +175,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label1;
         private ucNhapSachMoi ucNhapSachMoi1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colTenSach;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colTheLoai;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colTacGia;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colSoLuong;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDonGia;
         private System.Windows.Forms.Button btnLuu;
+        private System.Windows.Forms.Button btnImport;
     }
 }
