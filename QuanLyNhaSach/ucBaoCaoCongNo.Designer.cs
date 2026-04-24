@@ -46,11 +46,11 @@
             // 
             // btnBaoCaoTon
             // 
+            this.btnBaoCaoTon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBaoCaoTon.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBaoCaoTon.Location = new System.Drawing.Point(1362, 718);
-            this.btnBaoCaoTon.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBaoCaoTon.Location = new System.Drawing.Point(1022, 583);
             this.btnBaoCaoTon.Name = "btnBaoCaoTon";
-            this.btnBaoCaoTon.Size = new System.Drawing.Size(250, 55);
+            this.btnBaoCaoTon.Size = new System.Drawing.Size(188, 45);
             this.btnBaoCaoTon.TabIndex = 15;
             this.btnBaoCaoTon.Text = "Báo Cáo Tồn";
             this.btnBaoCaoTon.UseVisualStyleBackColor = true;
@@ -58,11 +58,11 @@
             // 
             // btnBaoCaoCongNo
             // 
+            this.btnBaoCaoCongNo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBaoCaoCongNo.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBaoCaoCongNo.Location = new System.Drawing.Point(1620, 718);
-            this.btnBaoCaoCongNo.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBaoCaoCongNo.Location = new System.Drawing.Point(1215, 583);
             this.btnBaoCaoCongNo.Name = "btnBaoCaoCongNo";
-            this.btnBaoCaoCongNo.Size = new System.Drawing.Size(250, 55);
+            this.btnBaoCaoCongNo.Size = new System.Drawing.Size(188, 45);
             this.btnBaoCaoCongNo.TabIndex = 16;
             this.btnBaoCaoCongNo.Text = "Báo Cáo Công Nợ";
             this.btnBaoCaoCongNo.UseVisualStyleBackColor = true;
@@ -93,11 +93,10 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridView1.Location = new System.Drawing.Point(50, 130);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridView1.Location = new System.Drawing.Point(38, 106);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(1820, 580);
+            this.dataGridView1.Size = new System.Drawing.Size(1365, 471);
             this.dataGridView1.TabIndex = 14;
             // 
             // colID
@@ -139,10 +138,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Tahoma", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(45, 99);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(34, 80);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(193, 27);
+            this.label2.Size = new System.Drawing.Size(152, 21);
             this.label2.TabIndex = 13;
             this.label2.Text = "Báo cáo công nợ";
             // 
@@ -150,26 +148,32 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(660, 9);
+            this.label1.Location = new System.Drawing.Point(495, 7);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(532, 54);
+            this.label1.Size = new System.Drawing.Size(430, 45);
             this.label1.TabIndex = 12;
             this.label1.Text = "BÁO CÁO ĐỊNH KỲ THÁNG";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnXoa
             // 
+            this.btnXoa.BackColor = System.Drawing.Color.Red;
+            this.btnXoa.FlatAppearance.BorderSize = 0;
+            this.btnXoa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnXoa.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
-            this.btnXoa.Location = new System.Drawing.Point(1238, 717);
+            this.btnXoa.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnXoa.Location = new System.Drawing.Point(928, 583);
+            this.btnXoa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(117, 55);
+            this.btnXoa.Size = new System.Drawing.Size(88, 45);
             this.btnXoa.TabIndex = 17;
             this.btnXoa.Text = "Xóa";
-            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.UseVisualStyleBackColor = false;
             // 
             // ucBaoCaoCongNo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnBaoCaoTon);
@@ -177,9 +181,8 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ucBaoCaoCongNo";
-            this.Size = new System.Drawing.Size(1920, 860);
+            this.Size = new System.Drawing.Size(1440, 699);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
