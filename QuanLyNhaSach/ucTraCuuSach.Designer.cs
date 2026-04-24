@@ -67,12 +67,12 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.Location = new System.Drawing.Point(50, 130);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataGridView1.Location = new System.Drawing.Point(38, 106);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1820, 580);
+            this.dataGridView1.Size = new System.Drawing.Size(1365, 471);
             this.dataGridView1.TabIndex = 0;
             // 
             // colID
@@ -114,19 +114,20 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(660, 9);
+            this.label1.Location = new System.Drawing.Point(520, 7);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(266, 54);
+            this.label1.Size = new System.Drawing.Size(214, 45);
             this.label1.TabIndex = 1;
             this.label1.Text = "Tra Cứu Sách";
             // 
             // cbTimKiem
             // 
             this.cbTimKiem.FormattingEnabled = true;
-            this.cbTimKiem.Location = new System.Drawing.Point(173, 82);
-            this.cbTimKiem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbTimKiem.Location = new System.Drawing.Point(130, 67);
+            this.cbTimKiem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbTimKiem.Name = "cbTimKiem";
-            this.cbTimKiem.Size = new System.Drawing.Size(474, 24);
+            this.cbTimKiem.Size = new System.Drawing.Size(356, 21);
             this.cbTimKiem.TabIndex = 2;
             this.cbTimKiem.SelectedIndexChanged += new System.EventHandler(this.cbTimKiem_SelectedIndexChanged);
             // 
@@ -134,24 +135,25 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(45, 79);
+            this.label2.Location = new System.Drawing.Point(34, 64);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(116, 30);
+            this.label2.Size = new System.Drawing.Size(92, 23);
             this.label2.TabIndex = 3;
             this.label2.Text = "Tìm Kiếm:";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // ucTraCuuSach
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cbTimKiem);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ucTraCuuSach";
-            this.Size = new System.Drawing.Size(1920, 860);
+            this.Size = new System.Drawing.Size(1440, 699);
             this.Load += new System.EventHandler(this.ucTraCuuSach_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
