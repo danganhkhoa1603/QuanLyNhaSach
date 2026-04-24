@@ -144,6 +144,63 @@ namespace QuanLyNhaSach
         // ================= UPDATE =================
         private void btnSua_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        // ================= DELETE =================
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void cbTimKiem_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnXoa_Click_1(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow == null || dataGridView1.CurrentRow.IsNewRow)
+            {
+                MessageBox.Show("Vui lòng chọn dòng hợp lệ!");
+                return;
+            }
+
+            if (dataGridView1.CurrentRow.Cells["ID"].Value == null)
+            {
+                MessageBox.Show("Không có ID!");
+                return;
+            }
+
+            int id = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ID"].Value);
+
+            DialogResult r = MessageBox.Show("Bạn chắc chắn muốn xóa?", "Xác nhận", MessageBoxButtons.YesNo);
+            if (r != DialogResult.Yes) return;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    string query = "DELETE FROM Sach WHERE ID=@ID";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@ID", id);
+
+                    cmd.ExecuteNonQuery();
+                }
+
+                MessageBox.Show("Xóa thành công!");
+                LoadSach();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Không thể xóa (có thể có khóa ngoại)\n\n" + ex.Message);
+            }
+        }
+
+        private void btnSua_Click_1(object sender, EventArgs e)
+        {
             if (!isEditing)
             {
                 // 👉 Bật sửa
@@ -195,48 +252,6 @@ namespace QuanLyNhaSach
 
                 MessageBox.Show("Cập nhật thành công!");
                 LoadSach();
-            }
-        }
-
-        // ================= DELETE =================
-        private void btnXoa_Click(object sender, EventArgs e)
-        {
-            if (dataGridView1.CurrentRow == null || dataGridView1.CurrentRow.IsNewRow)
-            {
-                MessageBox.Show("Vui lòng chọn dòng hợp lệ!");
-                return;
-            }
-
-            if (dataGridView1.CurrentRow.Cells["ID"].Value == null)
-            {
-                MessageBox.Show("Không có ID!");
-                return;
-            }
-
-            int id = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ID"].Value);
-
-            DialogResult r = MessageBox.Show("Bạn chắc chắn muốn xóa?", "Xác nhận", MessageBoxButtons.YesNo);
-            if (r != DialogResult.Yes) return;
-
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
-
-                    string query = "DELETE FROM Sach WHERE ID=@ID";
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@ID", id);
-
-                    cmd.ExecuteNonQuery();
-                }
-
-                MessageBox.Show("Xóa thành công!");
-                LoadSach();
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show("Không thể xóa (có thể có khóa ngoại)\n\n" + ex.Message);
             }
         }
     }
