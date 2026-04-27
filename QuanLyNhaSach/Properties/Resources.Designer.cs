@@ -63,6 +63,16 @@ namespace QuanLyNhaSach.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap account_circle_24dp_0000F5_FILL0_wght400_GRAD0_opsz24 {
+            get {
+                object obj = ResourceManager.GetObject("account_circle_24dp_0000F5_FILL0_wght400_GRAD0_opsz24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap c25ba372_1c0e_4e56_9d05_3648ac5a751d {
             get {
                 object obj = ResourceManager.GetObject("c25ba372-1c0e-4e56-9d05-3648ac5a751d", resourceCulture);
@@ -93,9 +103,49 @@ namespace QuanLyNhaSach.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap location_on_24dp_0000F5_FILL0_wght400_GRAD0_opsz24 {
+            get {
+                object obj = ResourceManager.GetObject("location_on_24dp_0000F5_FILL0_wght400_GRAD0_opsz24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap money_bag_24dp_0000F5_FILL0_wght400_GRAD0_opsz24 {
+            get {
+                object obj = ResourceManager.GetObject("money_bag_24dp_0000F5_FILL0_wght400_GRAD0_opsz24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap phone_enabled_24dp_0000F5_FILL0_wght400_GRAD0_opsz24 {
+            get {
+                object obj = ResourceManager.GetObject("phone_enabled_24dp_0000F5_FILL0_wght400_GRAD0_opsz24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Profile {
             get {
                 object obj = ResourceManager.GetObject("Profile", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap stacked_email_24dp_0000F5_FILL0_wght400_GRAD0_opsz24 {
+            get {
+                object obj = ResourceManager.GetObject("stacked_email_24dp_0000F5_FILL0_wght400_GRAD0_opsz24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
