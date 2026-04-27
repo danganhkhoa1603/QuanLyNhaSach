@@ -24,7 +24,7 @@ namespace QuanLyNhaSach
             decimal tong = 0;
             foreach (DataRow row in gioHang.Rows)
             {
-                tong += (decimal)row["ThanhTien"];
+                tong += Convert.ToDecimal(row["ThanhTien"]);
             }
             txtTongHoaDon.Text = tong.ToString("N0");
         }
@@ -42,25 +42,25 @@ namespace QuanLyNhaSach
             // Thiết lập cấu trúc DataTable cho giỏ hàng
             if (gioHang.Columns.Count == 0)
             {
-                gioHang.Columns.Add("Sách ID", typeof(int));
-                gioHang.Columns.Add("Tên Sách", typeof(string));
-                gioHang.Columns.Add("Thể Loại", typeof(string));
-                gioHang.Columns.Add("Số Lượng", typeof(int));
-                gioHang.Columns.Add("Đơn Giá", typeof(decimal));
-                gioHang.Columns.Add("Thành Tiền", typeof(decimal));
+                gioHang.Columns.Add("SachID", typeof(int));
+                gioHang.Columns.Add("TenSach", typeof(string));
+                gioHang.Columns.Add("TheLoai", typeof(string));
+                gioHang.Columns.Add("SoLuong", typeof(int));
+                gioHang.Columns.Add("DonGia", typeof(decimal));
+                gioHang.Columns.Add("ThanhTien", typeof(decimal));
             }
 
             dgvGioHang.DataSource = gioHang;
 
             ucThongTinChiTietHoaDon1.OnThemSach += (id, ten, loai, sl, gia) =>
             {
-                ThemSach(ten, loai, sl, gia);
+                ThemSach(id, ten, loai, sl, gia);
                 CapNhatTongTien();
             };
         }
         private void ThemSachHandler(int id, string ten, string loai, int sl, decimal gia)
         {
-            ThemSach(ten, loai, sl, gia);
+            ThemSach(id, ten, loai, sl, gia);
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -312,12 +312,11 @@ namespace QuanLyNhaSach
         {
 
         }
-        public void ThemSach(string tenSach, string theLoai, int soLuong, decimal donGia)
+        public void ThemSach(int sachID, string tenSach, string theLoai, int soLuong, decimal donGia)
         {
             foreach (DataRow row in gioHang.Rows)
             {
-                // 🔍 so sánh theo tên
-                if (row["TenSach"].ToString() == tenSach)
+                if ((int)row["SachID"] == sachID)
                 {
                     row["SoLuong"] = (int)row["SoLuong"] + soLuong;
                     row["ThanhTien"] = (int)row["SoLuong"] * donGia;
@@ -326,15 +325,8 @@ namespace QuanLyNhaSach
             }
 
             decimal thanhTien = soLuong * donGia;
-            int a = 0;
-            for (int i = 0; i < gioHang.Rows.Count; i++)
-            {
-                int id = (int)gioHang.Rows[i]["ID"];
-                if (id > a)
-                    a = id;
-            }
-            a++; 
-            gioHang.Rows.Add(a, tenSach, theLoai, soLuong, donGia, thanhTien);
+
+            gioHang.Rows.Add(sachID, tenSach, theLoai, soLuong, donGia, thanhTien);
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

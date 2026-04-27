@@ -105,6 +105,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(1820, 580);
             this.dataGridView1.TabIndex = 7;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             // 
             // label1
             // 
@@ -140,7 +141,7 @@
             // 
             // ucNhapSachMoi1
             // 
-            this.ucNhapSachMoi1.Location = new System.Drawing.Point(851, 191);
+            this.ucNhapSachMoi1.Location = new System.Drawing.Point(751, 165);
             this.ucNhapSachMoi1.Margin = new System.Windows.Forms.Padding(5);
             this.ucNhapSachMoi1.Name = "ucNhapSachMoi1";
             this.ucNhapSachMoi1.Size = new System.Drawing.Size(352, 451);
