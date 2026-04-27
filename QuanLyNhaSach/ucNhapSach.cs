@@ -323,7 +323,7 @@ namespace QuanLyNhaSach
 
         private void ucNhapSach_Load(object sender, EventArgs e)
         {
-            dataGridView1.ReadOnly = true;
+             dataGridView1.ReadOnly = true;
 
             // ✅ thêm 2 dòng này
             dataGridView1.CellValueChanged += dataGridView1_CellValueChanged;

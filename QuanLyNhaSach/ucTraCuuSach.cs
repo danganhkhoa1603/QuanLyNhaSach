@@ -36,35 +36,39 @@ namespace QuanLyNhaSach
 
                 dataGridView1.DataSource = dt;
 
-                // 👉 Header tiếng Việt
-                if (dataGridView1.Columns["MaSach"] != null)
-                    dataGridView1.Columns["MaSach"].HeaderText = "Mã Sách";
-
-                if (dataGridView1.Columns["TenSach"] != null)
-                    dataGridView1.Columns["TenSach"].HeaderText = "Tên Sách";
-
-                if (dataGridView1.Columns["TheLoai"] != null)
-                    dataGridView1.Columns["TheLoai"].HeaderText = "Thể Loại";
-
-                if (dataGridView1.Columns["TacGia"] != null)
-                    dataGridView1.Columns["TacGia"].HeaderText = "Tác Giả";
-
-                if (dataGridView1.Columns["SoLuong"] != null)
-                    dataGridView1.Columns["SoLuong"].HeaderText = "Số Lượng";
-
-                if (dataGridView1.Columns["DonGia"] != null)
-                    dataGridView1.Columns["DonGia"].HeaderText = "Đơn Giá";
-
-                // 👉 Không cho sửa ID + MaSach
-                if (dataGridView1.Columns["ID"] != null)
-                {
-                    dataGridView1.Columns["ID"].ReadOnly = true;
-                    dataGridView1.Columns["ID"].Visible = false; // ẩn luôn cho đẹp
-                }
-
-                if (dataGridView1.Columns["MaSach"] != null)
-                    dataGridView1.Columns["MaSach"].ReadOnly = true;
+                SetupGrid();
             }
+        }
+
+        // ================= SETUP GRID =================
+        void SetupGrid()
+        {
+            if (dataGridView1.Columns["ID"] != null)
+            {
+                dataGridView1.Columns["ID"].Visible = false;
+                dataGridView1.Columns["ID"].ReadOnly = true;
+            }
+
+            if (dataGridView1.Columns["MaSach"] != null)
+            {
+                dataGridView1.Columns["MaSach"].HeaderText = "Mã Sách";
+                dataGridView1.Columns["MaSach"].ReadOnly = true;
+            }
+
+            if (dataGridView1.Columns["TenSach"] != null)
+                dataGridView1.Columns["TenSach"].HeaderText = "Tên Sách";
+
+            if (dataGridView1.Columns["TheLoai"] != null)
+                dataGridView1.Columns["TheLoai"].HeaderText = "Thể Loại";
+
+            if (dataGridView1.Columns["TacGia"] != null)
+                dataGridView1.Columns["TacGia"].HeaderText = "Tác Giả";
+
+            if (dataGridView1.Columns["SoLuong"] != null)
+                dataGridView1.Columns["SoLuong"].HeaderText = "Số Lượng";
+
+            if (dataGridView1.Columns["DonGia"] != null)
+                dataGridView1.Columns["DonGia"].HeaderText = "Đơn Giá";
         }
 
         // ================= LOAD COMBOBOX =================
@@ -100,82 +104,55 @@ namespace QuanLyNhaSach
 
             LoadSach();
             LoadComboBox();
+            cbTimKiem.TextChanged += cbTimKiem_TextChanged;
         }
 
-        // ================= SEARCH =================
+        // ================= SEARCH XỊN =================
         private void cbTimKiem_TextChanged(object sender, EventArgs e)
         {
+            string keyword = cbTimKiem.Text.Trim();
+
+            // Nếu rỗng → load lại toàn bộ
+            if (string.IsNullOrEmpty(keyword))
+            {
+                LoadSach();
+                return;
+            }
+
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                string query = @"SELECT 
-                                    ID,
-                                    MaSach,
-                                    TenSach,
-                                    TheLoai,
-                                    TacGia,
-                                    SoLuong,
-                                    DonGia
-                                 FROM Sach
-                                 WHERE TenSach LIKE @key OR TacGia LIKE @key";
+                conn.Open();
+
+                string query = @"
+        SELECT *
+        FROM Sach
+        WHERE TenSach LIKE '%' + @key + '%'
+           OR TacGia LIKE '%' + @key + '%'";
 
                 SqlDataAdapter da = new SqlDataAdapter(query, conn);
-                da.SelectCommand.Parameters.AddWithValue("@key", "%" + cbTimKiem.Text + "%");
+                da.SelectCommand.Parameters.AddWithValue("@key", keyword);
 
                 DataTable dt = new DataTable();
                 da.Fill(dt);
 
                 dataGridView1.DataSource = dt;
-
-                // 👉 set lại header + khóa cột
-                if (dataGridView1.Columns["ID"] != null)
-                {
-                    dataGridView1.Columns["ID"].ReadOnly = true;
-                    dataGridView1.Columns["ID"].Visible = false;
-                }
-
-                if (dataGridView1.Columns["MaSach"] != null)
-                {
-                    dataGridView1.Columns["MaSach"].HeaderText = "Mã Sách";
-                    dataGridView1.Columns["MaSach"].ReadOnly = true;
-                }
+                SetupGrid();
             }
-        }
-
-        // ================= UPDATE =================
-        private void btnSua_Click(object sender, EventArgs e)
-        {
-            
         }
 
         // ================= DELETE =================
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            
-        }
-
-        private void cbTimKiem_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnXoa_Click_1(object sender, EventArgs e)
-        {
             if (dataGridView1.CurrentRow == null || dataGridView1.CurrentRow.IsNewRow)
             {
-                MessageBox.Show("Vui lòng chọn dòng hợp lệ!");
-                return;
-            }
-
-            if (dataGridView1.CurrentRow.Cells["ID"].Value == null)
-            {
-                MessageBox.Show("Không có ID!");
+                MessageBox.Show("Vui lòng chọn dòng!");
                 return;
             }
 
             int id = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ID"].Value);
 
-            DialogResult r = MessageBox.Show("Bạn chắc chắn muốn xóa?", "Xác nhận", MessageBoxButtons.YesNo);
-            if (r != DialogResult.Yes) return;
+            if (MessageBox.Show("Bạn chắc chắn muốn xóa?", "Xác nhận", MessageBoxButtons.YesNo) != DialogResult.Yes)
+                return;
 
             try
             {
@@ -195,15 +172,15 @@ namespace QuanLyNhaSach
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Không thể xóa (có thể có khóa ngoại)\n\n" + ex.Message);
+                MessageBox.Show("Không thể xóa!\n" + ex.Message);
             }
         }
 
-        private void btnSua_Click_1(object sender, EventArgs e)
+        // ================= UPDATE =================
+        private void btnSua_Click(object sender, EventArgs e)
         {
             if (!isEditing)
             {
-                // 👉 Bật sửa
                 dataGridView1.ReadOnly = false;
                 isEditing = true;
                 btnSua.Text = "Lưu";
@@ -216,7 +193,6 @@ namespace QuanLyNhaSach
             }
             else
             {
-                // 👉 Lưu
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
@@ -235,7 +211,7 @@ namespace QuanLyNhaSach
 
                         SqlCommand cmd = new SqlCommand(query, conn);
 
-                        cmd.Parameters.AddWithValue("@ID", row.Cells["ID"].Value ?? 0);
+                        cmd.Parameters.AddWithValue("@ID", row.Cells["ID"].Value);
                         cmd.Parameters.AddWithValue("@TenSach", row.Cells["TenSach"].Value ?? "");
                         cmd.Parameters.AddWithValue("@TheLoai", row.Cells["TheLoai"].Value ?? "");
                         cmd.Parameters.AddWithValue("@TacGia", row.Cells["TacGia"].Value ?? "");
