@@ -15,9 +15,11 @@ namespace QuanLyNhaSach
     {
         string connectionString = "Data Source=.;Initial Catalog=QuanLyNhaSach;Integrated Security=True";
         DataTable gioHang = new DataTable();
+        bool isEditing = false;
         public ucBanHang()
         {
             InitializeComponent();
+            dgvGioHang.ReadOnly = true;
         }
         private void CapNhatTongTien()
         {
@@ -175,6 +177,52 @@ namespace QuanLyNhaSach
                         cmdUpdateSach.Parameters.AddWithValue("@SachID", row["SachID"]);
 
                         cmdUpdateSach.ExecuteNonQuery();
+
+                        // ================== CẬP NHẬT BÁO CÁO TỒN (BÁN) ==================
+                        int thang = DateTime.Now.Month;
+                        int nam = DateTime.Now.Year;
+                        
+                        string checkTon = @"
+SELECT ID FROM BaoCaoTon 
+WHERE SachID = @SachID AND Thang = @Thang AND Nam = @Nam";
+
+                        SqlCommand cmdCheckTon = new SqlCommand(checkTon, conn, tran);
+                        cmdCheckTon.Parameters.AddWithValue("@SachID", row["SachID"]);
+                        cmdCheckTon.Parameters.AddWithValue("@Thang", thang);
+                        cmdCheckTon.Parameters.AddWithValue("@Nam", nam);
+
+                        object tonResult = cmdCheckTon.ExecuteScalar();
+
+                        
+
+                        if (tonResult != null)
+                        {
+                            string updateTon = @"
+                    UPDATE BaoCaoTon
+                    SET PhatSinh = PhatSinh - @SoLuong,
+                        TonCuoi = TonCuoi - @SoLuong
+                    WHERE ID = @ID";
+
+                            SqlCommand cmdUpdateTon = new SqlCommand(updateTon, conn, tran);
+                            cmdUpdateTon.Parameters.AddWithValue("@SoLuong", soLuongBan);
+                            cmdUpdateTon.Parameters.AddWithValue("@ID", Convert.ToInt32(tonResult));
+
+                            cmdUpdateTon.ExecuteNonQuery();
+                        }
+                        else
+                        {
+                            string insertTon = @"
+                            INSERT INTO BaoCaoTon (SachID, Thang, Nam, TonDau, PhatSinh, TonCuoi)
+                            VALUES (@SachID, @Thang, @Nam, 0, -@SoLuong, -@SoLuong)";
+
+                            SqlCommand cmdInsertTon = new SqlCommand(insertTon, conn, tran);
+                            cmdInsertTon.Parameters.AddWithValue("@SachID", row["SachID"]);
+                            cmdInsertTon.Parameters.AddWithValue("@Thang", thang);
+                            cmdInsertTon.Parameters.AddWithValue("@Nam", nam);
+                            cmdInsertTon.Parameters.AddWithValue("@SoLuong", soLuongBan);
+
+                            cmdInsertTon.ExecuteNonQuery();
+                        }
                     }
 
                     // 3. Tính tổng tiền (an toàn)
@@ -268,6 +316,8 @@ namespace QuanLyNhaSach
                             cmdInsert.Parameters.AddWithValue("@NoCuoi", noCuoi);
 
                             cmdInsert.ExecuteNonQuery();
+
+
                         }
                     }
 
@@ -288,7 +338,10 @@ namespace QuanLyNhaSach
                     tran.Rollback();
                     MessageBox.Show("Lỗi: " + ex.Message);
                 }
+
+
             }
+
         }
 
         private void btnLichSuBanHang_Click(object sender, EventArgs e)
@@ -336,6 +389,65 @@ namespace QuanLyNhaSach
         private void txtTongHoaDon_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if (dgvGioHang.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Vui lòng chọn dòng cần xóa!");
+                return;
+            }
+
+            DialogResult result = MessageBox.Show(
+                "Bạn có chắc muốn xóa dòng đã chọn không?",
+                "Xác nhận xóa",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                foreach (DataGridViewRow row in dgvGioHang.SelectedRows)
+                {
+                    if (!row.IsNewRow)
+                        dgvGioHang.Rows.Remove(row);
+                }
+            }
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            if (!isEditing)
+            {
+                // 👉 BẮT ĐẦU SỬA
+                if (dgvGioHang.CurrentRow == null)
+                {
+                    MessageBox.Show("Chọn dòng cần sửa!");
+                    return;
+                }
+
+                isEditing = true;
+                btnSua.Text = "Lưu";
+
+                // Cho sửa
+                dgvGioHang.ReadOnly = false;
+
+                // Chỉ cho sửa 1 số cột (khuyên dùng)
+                dgvGioHang.Columns["SachID"].ReadOnly = true;
+                dgvGioHang.Columns["TenSach"].ReadOnly = true;
+                MessageBox.Show("Bạn có thể chỉnh sửa rồi!");
+            }
+            else
+            {
+                // 👉 LƯU LẠI
+                isEditing = false;
+                btnSua.Text = "Sửa";
+
+                dgvGioHang.ReadOnly = true;
+
+                MessageBox.Show("Đã lưu chỉnh sửa (trên bảng). Nhấn Lưu để Lưu!");
+            }
         }
     }
 }
