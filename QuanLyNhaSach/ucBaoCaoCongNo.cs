@@ -93,5 +93,10 @@ namespace QuanLyNhaSach
         {
 
         }
+
+        private void ucBaoCaoCongNo_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

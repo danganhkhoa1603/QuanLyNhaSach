@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static QuanLyNhaSach.frmBaoCaoThang_BaoCaoTon;
 
 namespace QuanLyNhaSach
 {
@@ -37,15 +38,50 @@ namespace QuanLyNhaSach
                 return;
             }
 
+            decimal donGia;
+            if (!decimal.TryParse(txtDonGia.Text, out donGia))
+            {
+                MessageBox.Show("Đơn giá không hợp lệ!");
+                return;
+            }
+
+            string tenSach = txtTenSach.Text;
+
+            // ===== QUY ĐỊNH 1 =====
+            int soLuongMin = QuyDinhBUS.LaySoLuongNhapToiThieu();
+
+            if (soLuong < soLuongMin)
+            {
+                MessageBox.Show($"Số lượng nhập phải >= {soLuongMin}");
+                return;
+            }
+
+            // ===== QUY ĐỊNH 2 =====
+            int tonToiThieu = QuyDinhBUS.LaySoLuongNhapToiThieu();
+
+            // ❗ THÊM DÒNG NÀY (bạn bị thiếu)
+            int soLuongTon = QuyDinhBUS.LaySoLuongTon(tenSach);
+
+            // nếu sách đã tồn tại
+            if (soLuongTon != -1)
+            {
+                if (soLuongTon >= tonToiThieu)
+                {
+                    MessageBox.Show($"Chỉ được nhập khi tồn < {tonToiThieu}");
+                    return;
+                }
+            }
+
+            // ===== OK thì cho nhập =====
             grid.ThemSach(
-                txtTenSach.Text,
+                tenSach,
                 txtTheLoai.Text,
                 txtTacGia.Text,
                 soLuong,
-                decimal.Parse(txtDonGia.Text)
+                donGia
             );
 
-            this.ParentForm.Close(); // đóng popup
+            this.ParentForm.Close();
         }
 
     }

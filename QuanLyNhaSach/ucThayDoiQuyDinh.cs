@@ -16,17 +16,29 @@ namespace QuanLyNhaSach
     {
         string connectionString = "Data Source=.;Initial Catalog=QuanLyNhaSach;Integrated Security=True";
         bool isEditing = false;
+        // 1. Khai báo biến để nhận quyền từ Trang Chủ truyền sang
+        public string QuyenTruyCap { get; set; }
 
         public ucThayDoiQuyDinh()
         {
             InitializeComponent();
         }
 
+        // 2. Tìm sự kiện Load của UserControl này (hoặc tự tạo nếu chưa có)
         private void ucThayDoiQuyDinh_Load(object sender, EventArgs e)
         {
+            // 1. Chạy các hàm khởi tạo mặc định ban đầu của bạn
             LoadQuyDinh();
-            SetReadOnly(true);   // 👉 ban đầu chỉ đọc
+            SetReadOnly(true);   
             btnCapNhat.Text = "Cập nhật";
+
+            // 2. Áp dụng phân quyền: Nếu là Nhân viên thì khóa luôn nút Cập nhật
+            if (QuyenTruyCap == "NhanVien")
+            {
+                btnCapNhat.Enabled = false;
+                btnCapNhat.BackColor = Color.Gray;
+            }
+            // Nếu là "Admin" thì code sẽ bỏ qua đoạn if này, Admin vẫn bấm nút Cập nhật được bình thường.
         }
         void SetReadOnly(bool isReadOnly)
         {
@@ -112,6 +124,11 @@ namespace QuanLyNhaSach
 
         private void btnCapNhat_Click(object sender, EventArgs e)
         {
+            if (QuyenTruyCap != "Admin")
+            {
+                MessageBox.Show("Bạn không có quyền cập nhật quy định!");
+                return;
+            }
             if (!isEditing)
             {
                 // 👉 BẮT ĐẦU SỬA

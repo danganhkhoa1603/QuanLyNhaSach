@@ -26,6 +26,7 @@ namespace QuanLyNhaSach
                                     TenSach,
                                     TheLoai,
                                     TacGia,
+                                    SoLuong,
                                     DonGia
                                  FROM Sach";
 
@@ -62,6 +63,9 @@ namespace QuanLyNhaSach
 
             if (dataGridView1.Columns["TacGia"] != null)
                 dataGridView1.Columns["TacGia"].HeaderText = "Tác Giả";
+
+            if (dataGridView1.Columns["SoLuong"] != null)
+                dataGridView1.Columns["SoLuong"].HeaderText = "Số lượng";
 
             if (dataGridView1.Columns["DonGia"] != null)
                 dataGridView1.Columns["DonGia"].HeaderText = "Đơn Giá";
@@ -201,6 +205,7 @@ namespace QuanLyNhaSach
                                          SET TenSach=@TenSach,
                                              TheLoai=@TheLoai,
                                              TacGia=@TacGia,
+                                             SoLuong=@SoLuong,  
                                              DonGia=@DonGia
                                          WHERE ID=@ID";
 
@@ -210,6 +215,7 @@ namespace QuanLyNhaSach
                         cmd.Parameters.AddWithValue("@TenSach", row.Cells["TenSach"].Value ?? "");
                         cmd.Parameters.AddWithValue("@TheLoai", row.Cells["TheLoai"].Value ?? "");
                         cmd.Parameters.AddWithValue("@TacGia", row.Cells["TacGia"].Value ?? "");
+                        cmd.Parameters.AddWithValue("@SoLuong", row.Cells["SoLuong"].Value ?? 0);
                         cmd.Parameters.AddWithValue("@DonGia", row.Cells["DonGia"].Value ?? 0);
 
                         cmd.ExecuteNonQuery();

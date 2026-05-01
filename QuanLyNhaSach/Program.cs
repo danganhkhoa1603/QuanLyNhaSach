@@ -16,7 +16,7 @@ namespace QuanLyNhaSach
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmBaoCaoThang_BaoCaoTon());
+            Application.Run(new Form1());
         }
     }
 }

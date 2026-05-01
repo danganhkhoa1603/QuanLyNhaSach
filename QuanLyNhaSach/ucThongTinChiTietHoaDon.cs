@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static QuanLyNhaSach.frmBaoCaoThang_BaoCaoTon;
 
 namespace QuanLyNhaSach
 {
@@ -38,6 +39,7 @@ namespace QuanLyNhaSach
                 MessageBox.Show("Vui lòng nhập đúng tên sách!");
                 return;
             }
+
             int soLuong;
             if (!int.TryParse(txtSoLuong.Text, out soLuong))
             {
@@ -52,7 +54,20 @@ namespace QuanLyNhaSach
                 return;
             }
 
-            // 🔥 Gửi dữ liệu ra ngoài
+            // ===== 🔥 LẤY DỮ LIỆU =====
+            int tonHienTai = QuyDinhBUS.LaySoLuongTon(txtTenSach.Text);
+            int tonToiThieu = QuyDinhBUS.LaySoLuongTonToiThieuSauBan();
+            int maxBan = tonHienTai - tonToiThieu;
+
+            // ===== 🔥 KIỂM TRA QUY ĐỊNH =====
+            if (tonHienTai - soLuong < tonToiThieu)
+            {
+                MessageBox.Show($"Không được bán! Tồn sau bán phải >= {tonToiThieu} " +
+                    $"Chỉ được bán tối đa {maxBan} quyển!");
+                return;
+            }
+
+            // ===== OK thì cho bán =====
             OnThemSach?.Invoke(
                 currentSachID,
                 txtTenSach.Text,
@@ -61,9 +76,8 @@ namespace QuanLyNhaSach
                 donGia
             );
 
-            this.Visible = false; // ❗ KHÔNG dùng Close()
+            this.Visible = false;
         }
-
         private void txtTenSach_TextChanged(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtTenSach.Text))

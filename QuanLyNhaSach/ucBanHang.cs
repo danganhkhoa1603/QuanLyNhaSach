@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static QuanLyNhaSach.frmBaoCaoThang_BaoCaoTon;
 
 namespace QuanLyNhaSach
 {
@@ -113,8 +114,7 @@ namespace QuanLyNhaSach
                 return;
             }
 
-            decimal tienKhachTra;
-            if (!decimal.TryParse(txtTienDaNhan.Text, out tienKhachTra))
+            if (!decimal.TryParse(txtTienDaNhan.Text, out decimal tienKhachDaNhan))
             {
                 MessageBox.Show("Tiền khách trả không hợp lệ!");
                 return;
@@ -127,13 +127,13 @@ namespace QuanLyNhaSach
 
                 try
                 {
-                    //  Tạo mã hóa đơn
+                    // ================== 1. TẠO HÓA ĐƠN ==================
                     string maHoaDon = "HD" + DateTime.Now.ToString("yyyyMMddHHmmss");
 
-                    //  1. Lưu hóa đơn
-                    string queryHD = @"INSERT INTO HoaDon(MaHoaDon, KhachHangID, NgayLap)
-                               OUTPUT INSERTED.ID
-                               VALUES (@MaHD, @KHID, GETDATE())";
+                    string queryHD = @"
+                INSERT INTO HoaDon(MaHoaDon, KhachHangID, NgayLap)
+                OUTPUT INSERTED.ID
+                VALUES (@MaHD, @KHID, GETDATE())";
 
                     SqlCommand cmdHD = new SqlCommand(queryHD, conn, tran);
                     cmdHD.Parameters.AddWithValue("@MaHD", maHoaDon);
@@ -141,136 +141,109 @@ namespace QuanLyNhaSach
 
                     int hoaDonID = (int)cmdHD.ExecuteScalar();
 
-                    // 2. Lưu chi tiết hóa đơn
+                    // ================== 2. CHI TIẾT HÓA ĐƠN + TỒN KHO ==================
                     foreach (DataRow row in gioHang.Rows)
                     {
-                        SqlCommand cmdCT = new SqlCommand(
-                            @"INSERT INTO ChiTietHoaDon(HoaDonID, SachID, SoLuong, DonGia)
-                            VALUES (@HDID, @SachID, @SL, @Gia)", conn, tran);
+                        int sachID = Convert.ToInt32(row["SachID"]);
+                        int soLuongBan = Convert.ToInt32(row["SoLuong"]);
+
+                        // kiểm tra tồn kho
+                        SqlCommand checkSL = new SqlCommand(
+                            "SELECT SoLuong FROM Sach WHERE ID = @SachID", conn, tran);
+                        checkSL.Parameters.AddWithValue("@SachID", sachID);
+
+                        int tonKho = Convert.ToInt32(checkSL.ExecuteScalar());
+
+                        if (tonKho < soLuongBan)
+                            throw new Exception("Không đủ số lượng sách!");
+
+                        // insert chi tiết hóa đơn
+                        SqlCommand cmdCT = new SqlCommand(@"
+                    INSERT INTO ChiTietHoaDon(HoaDonID, SachID, SoLuong, DonGia)
+                    VALUES (@HDID, @SachID, @SL, @Gia)", conn, tran);
 
                         cmdCT.Parameters.AddWithValue("@HDID", hoaDonID);
-                        cmdCT.Parameters.AddWithValue("@SachID", row["SachID"]);
-                        cmdCT.Parameters.AddWithValue("@SL", row["SoLuong"]);
+                        cmdCT.Parameters.AddWithValue("@SachID", sachID);
+                        cmdCT.Parameters.AddWithValue("@SL", soLuongBan);
                         cmdCT.Parameters.AddWithValue("@Gia", row["DonGia"]);
 
                         cmdCT.ExecuteNonQuery();
 
-                        SqlCommand checkSL = new SqlCommand(
-                        "SELECT SoLuong FROM Sach WHERE ID = @SachID", conn, tran);
-                        checkSL.Parameters.AddWithValue("@SachID", row["SachID"]);
+                        // trừ tồn kho
+                        SqlCommand updateSach = new SqlCommand(@"
+                    UPDATE Sach
+                    SET SoLuong = SoLuong - @SL
+                    WHERE ID = @SachID", conn, tran);
 
-                        int tonKho = (int)checkSL.ExecuteScalar();
-                        int soLuongBan = Convert.ToInt32(row["SoLuong"]);
+                        updateSach.Parameters.AddWithValue("@SL", soLuongBan);
+                        updateSach.Parameters.AddWithValue("@SachID", sachID);
 
-                        if (tonKho < soLuongBan)
-                        {
-                            throw new Exception("Sách không đủ số lượng!");
-                        }
-
-                        // TRỪ SỐ LƯỢNG SÁCH
-                        SqlCommand cmdUpdateSach = new SqlCommand(
-                            @"UPDATE Sach
-                            SET SoLuong = SoLuong - @SL
-                            WHERE ID = @SachID", conn, tran);
-
-                        cmdUpdateSach.Parameters.AddWithValue("@SL", row["SoLuong"]);
-                        cmdUpdateSach.Parameters.AddWithValue("@SachID", row["SachID"]);
-
-                        cmdUpdateSach.ExecuteNonQuery();
-
-                        // ================== CẬP NHẬT BÁO CÁO TỒN (BÁN) ==================
-                        int thang = DateTime.Now.Month;
-                        int nam = DateTime.Now.Year;
-                        
-                        string checkTon = @"
-SELECT ID FROM BaoCaoTon 
-WHERE SachID = @SachID AND Thang = @Thang AND Nam = @Nam";
-
-                        SqlCommand cmdCheckTon = new SqlCommand(checkTon, conn, tran);
-                        cmdCheckTon.Parameters.AddWithValue("@SachID", row["SachID"]);
-                        cmdCheckTon.Parameters.AddWithValue("@Thang", thang);
-                        cmdCheckTon.Parameters.AddWithValue("@Nam", nam);
-
-                        object tonResult = cmdCheckTon.ExecuteScalar();
-
-                        
-
-                        if (tonResult != null)
-                        {
-                            string updateTon = @"
-                    UPDATE BaoCaoTon
-                    SET PhatSinh = PhatSinh - @SoLuong,
-                        TonCuoi = TonCuoi - @SoLuong
-                    WHERE ID = @ID";
-
-                            SqlCommand cmdUpdateTon = new SqlCommand(updateTon, conn, tran);
-                            cmdUpdateTon.Parameters.AddWithValue("@SoLuong", soLuongBan);
-                            cmdUpdateTon.Parameters.AddWithValue("@ID", Convert.ToInt32(tonResult));
-
-                            cmdUpdateTon.ExecuteNonQuery();
-                        }
-                        else
-                        {
-                            string insertTon = @"
-                            INSERT INTO BaoCaoTon (SachID, Thang, Nam, TonDau, PhatSinh, TonCuoi)
-                            VALUES (@SachID, @Thang, @Nam, 0, -@SoLuong, -@SoLuong)";
-
-                            SqlCommand cmdInsertTon = new SqlCommand(insertTon, conn, tran);
-                            cmdInsertTon.Parameters.AddWithValue("@SachID", row["SachID"]);
-                            cmdInsertTon.Parameters.AddWithValue("@Thang", thang);
-                            cmdInsertTon.Parameters.AddWithValue("@Nam", nam);
-                            cmdInsertTon.Parameters.AddWithValue("@SoLuong", soLuongBan);
-
-                            cmdInsertTon.ExecuteNonQuery();
-                        }
+                        updateSach.ExecuteNonQuery();
                     }
 
-                    // 3. Tính tổng tiền (an toàn)
+                    // ================== 3. TÍNH CÔNG NỢ ==================
                     decimal tongTien = gioHang.AsEnumerable()
                         .Sum(r => Convert.ToDecimal(r["ThanhTien"]));
 
-                    // 4. Tính phát sinh công nợ
-                    decimal phatSinh = tongTien - tienKhachTra;
-
-                    // làm tròn tránh lỗi số lẻ
+                    decimal phatSinh = tongTien - tienKhachDaNhan;
                     phatSinh = Math.Round(phatSinh, 0);
 
-                    // nếu = 0 thì không xử lý công nợ
-                    if (phatSinh != 0)
+                    if (phatSinh > 0)
                     {
-                        string check = @"SELECT ID, NoCuoi 
-                     FROM BaoCaoCongNo
-                     WHERE Thang = @Thang 
-                       AND Nam = @Nam 
-                       AND KhachHangID = @KHID";
-
-                        SqlCommand cmdCheck = new SqlCommand(check, conn, tran);
-                        cmdCheck.Parameters.AddWithValue("@Thang", DateTime.Now.Month);
-                        cmdCheck.Parameters.AddWithValue("@Nam", DateTime.Now.Year);
-                        cmdCheck.Parameters.AddWithValue("@KHID", currentKhachHangID);
+                        decimal noToiDa = QuyDinhBUS.LaySoTienNoToiDa();
 
                         int? id = null;
                         decimal noCuoiCu = 0;
 
-                        using (SqlDataReader reader = cmdCheck.ExecuteReader())
+                        // lấy công nợ hiện tại
+                        string check = @"
+                    SELECT ID, NoCuoi 
+                    FROM BaoCaoCongNo
+                    WHERE Thang = @Thang 
+                      AND Nam = @Nam 
+                      AND KhachHangID = @KHID";
+
+                        using (SqlCommand cmdCheck = new SqlCommand(check, conn, tran))
                         {
-                            if (reader.Read())
+                            cmdCheck.Parameters.AddWithValue("@Thang", DateTime.Now.Month);
+                            cmdCheck.Parameters.AddWithValue("@Nam", DateTime.Now.Year);
+                            cmdCheck.Parameters.AddWithValue("@KHID", currentKhachHangID);
+
+                            using (SqlDataReader reader = cmdCheck.ExecuteReader())
                             {
-                                id = (int)reader["ID"];
-                                noCuoiCu = Convert.ToDecimal(reader["NoCuoi"]);
+                                if (reader.Read())
+                                {
+                                    id = Convert.ToInt32(reader["ID"]);
+                                    noCuoiCu = Convert.ToDecimal(reader["NoCuoi"]);
+                                }
                             }
                         }
 
+                        decimal noMoi = noCuoiCu + phatSinh;
+
+                        // kiểm tra hạn mức
+                        if (noMoi > noToiDa)
+                        {
+                            decimal noConLai = noToiDa - noMoi;
+
+                            MessageBox.Show(
+                                "Khách hàng vượt hạn mức công nợ!\n\n" +
+                                $"• Nợ hiện tại: {noMoi:N0}\n" +
+                                $"• Hạn mức: {noToiDa:N0}"
+                            );
+
+                            tran.Rollback();
+                            return;
+                        }
+
+                        // update hoặc insert
                         if (id.HasValue)
                         {
-                            // 🔥 CẬP NHẬT
-                            decimal noMoi = noCuoiCu + phatSinh;
-
-                            SqlCommand cmdUpdate = new SqlCommand(
-                                @"UPDATE BaoCaoCongNo
-                                  SET PhatSinh = PhatSinh + @PhatSinh,
-                                      NoCuoi = @NoMoi
-                                  WHERE ID = @ID", conn, tran);
+                            SqlCommand cmdUpdate = new SqlCommand(@"
+                        UPDATE BaoCaoCongNo
+                        SET PhatSinh = PhatSinh + @PhatSinh,
+                            NoCuoi = @NoMoi
+                        WHERE ID = @ID", conn, tran);
 
                             cmdUpdate.Parameters.AddWithValue("@PhatSinh", phatSinh);
                             cmdUpdate.Parameters.AddWithValue("@NoMoi", noMoi);
@@ -280,33 +253,34 @@ WHERE SachID = @SachID AND Thang = @Thang AND Nam = @Nam";
                         }
                         else
                         {
-                            // 🔥 THÊM MỚI
                             decimal noDau = 0;
-                            
-                            // 🔍 Lấy nợ cuối tháng trước
-                            string getNoDauQuery = @"
-                                SELECT TOP 1 NoCuoi 
-                                FROM BaoCaoCongNo
-                                WHERE KhachHangID = @KHID
-                                ORDER BY Nam DESC, Thang DESC";
 
-                            SqlCommand cmdNoDau = new SqlCommand(getNoDauQuery, conn, tran);
+                            SqlCommand cmdNoDau = new SqlCommand(@"
+                        SELECT TOP 1 NoCuoi 
+                        FROM BaoCaoCongNo
+                        WHERE KhachHangID = @KHID
+                        ORDER BY Nam DESC, Thang DESC", conn, tran);
+
                             cmdNoDau.Parameters.AddWithValue("@KHID", currentKhachHangID);
 
                             object result = cmdNoDau.ExecuteScalar();
-                            if (result != null)
-                            {
+                            if (result != null && result != DBNull.Value)
                                 noDau = Convert.ToDecimal(result);
+
+                            decimal noCuoi = noDau + phatSinh;
+                            MessageBox.Show($"DEBUG: noCuoi={noCuoi} | noToiDa={noToiDa}");
+
+                            if (noCuoi > noToiDa)
+                            {
+                                MessageBox.Show($"Khách hàng vượt hạn mức công nợ!");
+                                tran.Rollback();
+                                return;
                             }
 
-                            // Tính nợ mới
-                            decimal noCuoi = noDau + phatSinh;
-
-                            // INSERT đúng chuẩn
-                            SqlCommand cmdInsert = new SqlCommand(
-                                @"INSERT INTO BaoCaoCongNo
-                                  (Thang, Nam, KhachHangID, NoDau, PhatSinh, NoCuoi)
-                                  VALUES (@Thang, @Nam, @KHID, @NoDau, @PhatSinh, @NoCuoi)", conn, tran);
+                            SqlCommand cmdInsert = new SqlCommand(@"
+                        INSERT INTO BaoCaoCongNo
+                        (Thang, Nam, KhachHangID, NoDau, PhatSinh, NoCuoi)
+                        VALUES (@Thang, @Nam, @KHID, @NoDau, @PhatSinh, @NoCuoi)", conn, tran);
 
                             cmdInsert.Parameters.AddWithValue("@Thang", DateTime.Now.Month);
                             cmdInsert.Parameters.AddWithValue("@Nam", DateTime.Now.Year);
@@ -316,17 +290,15 @@ WHERE SachID = @SachID AND Thang = @Thang AND Nam = @Nam";
                             cmdInsert.Parameters.AddWithValue("@NoCuoi", noCuoi);
 
                             cmdInsert.ExecuteNonQuery();
-
-
                         }
                     }
 
-                    // ✅ 5. Commit
+                    // ================== 4. COMMIT ==================
                     tran.Commit();
 
                     MessageBox.Show("Thanh toán thành công!");
 
-                    // 🔥 Reset
+                    // reset form
                     gioHang.Clear();
                     txtTienDaNhan.Text = "";
                     txtTenKhachHang.Text = "";
@@ -338,12 +310,8 @@ WHERE SachID = @SachID AND Thang = @Thang AND Nam = @Nam";
                     tran.Rollback();
                     MessageBox.Show("Lỗi: " + ex.Message);
                 }
-
-
             }
-
         }
-
         private void btnLichSuBanHang_Click(object sender, EventArgs e)
         {
             var frm = (frmBaoCaoThang_BaoCaoTon)this.FindForm();
@@ -440,14 +408,43 @@ WHERE SachID = @SachID AND Thang = @Thang AND Nam = @Nam";
             }
             else
             {
-                // 👉 LƯU LẠI
+                foreach (DataGridViewRow row in dgvGioHang.Rows)
+                {
+                    if (row.IsNewRow) continue;
+
+                    int sachID = Convert.ToInt32(row.Cells["SachID"].Value);
+                    int soLuong = Convert.ToInt32(row.Cells["SoLuong"].Value);
+
+                    int tonHienTai = QuyDinhBUS.LaySoLuongTonTheoID(sachID);
+                    int tonToiThieu = QuyDinhBUS.LaySoLuongTonToiThieuSauBan();
+
+                    int maxBan = tonHienTai - tonToiThieu;
+
+                    if (maxBan <= 0)
+                    {
+                        MessageBox.Show($"Sách ID {sachID} không thể bán thêm!");
+                        return;
+                    }
+
+                    if (soLuong > maxBan)
+                    {
+                        MessageBox.Show($"Sách ID {sachID} chỉ được bán tối đa {maxBan} quyển!");
+                        return;
+                    }
+                }
+
+                // 👉 OK thì lưu
                 isEditing = false;
                 btnSua.Text = "Sửa";
-
                 dgvGioHang.ReadOnly = true;
 
-                MessageBox.Show("Đã lưu chỉnh sửa (trên bảng). Nhấn Lưu để Lưu!");
+                MessageBox.Show("Đã lưu chỉnh sửa hợp lệ!");
             }
+        }
+
+        private void txtTienDaNhan_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
         }
     }
 }
